@@ -1,0 +1,16 @@
+.hero-actions{
+    padding-top: 1rem;
+    display:flex;
+    gap: 1rem;
+}
+
+.resume-btn .icon {
+    padding-top: 2px;
+    font-size: 1.5rem;
+    vertical-align: text-bottom;
+    margin-right: 0.5rem;
+}
+
+.hero{
+    padding-bottom: 3rem;
+}
