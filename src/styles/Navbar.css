@@ -1,0 +1,59 @@
+/* 1. Outer bar, sticks at top and centers content */
+.navbar {
+    position: relative;      /* ← no more sticky/fixed */
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;          /* vertical space around it */
+    pointer-events: auto;    /* you can click through it normally */
+    z-index: auto;
+}
+  
+  /* 2. Inner “pill” container */
+.navbar-inner {
+    pointer-events: auto;            /* re‑enable clicks inside */
+    display: flex;
+    align-items: center;
+    background: #242424;
+    backdrop-filter: blur(10px);       /* subtle blur behind */
+    padding: 1rem 2rem;              /* top/bottom 8px, left/right 32px */
+    border-radius: 15px;               /* round corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 2px solid #484848;
+
+    margin-bottom: 6rem;
+}
+  
+  /* 3. Your logo text */
+.logo {
+    margin: 0 3rem 0 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+}
+  
+  /* 4. The link list */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+  
+  /* 5. Each link styling */
+.nav-links a {
+    color: #FFF;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+  
+.nav-links a:hover {
+    color: #3b82f6; /* bright blue on hover */
+}
+  
