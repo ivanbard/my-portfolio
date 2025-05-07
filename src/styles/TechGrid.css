@@ -21,8 +21,7 @@
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     font-weight: 500;
     color: #1f2937;
 }
@@ -34,4 +33,26 @@
       grid-auto-rows: 80px;
     }
 }
+
+.tech-icon {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
+
+.tech-icon svg {
+    width: 2rem;
+    height: 2rem;
+    color: #1f2937;
+}
+  
+
+.tech-label {
+    text-align: center;
+    padding: 0 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #6a6c6e;
+}
