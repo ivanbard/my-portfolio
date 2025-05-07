@@ -1,6 +1,6 @@
-//import './styles/TechGrid.css';
+import '../styles/TechGrid.css';
 
-const tech = [ 'React', 'Node', 'Python', /*…8 total*/ ];
+const tech = [ 'React', 'Node', 'Python', 'Figma', 'C', 'JavaScript', 'Java', 'Django'];
 
 export default function TechGrid() {
   return (

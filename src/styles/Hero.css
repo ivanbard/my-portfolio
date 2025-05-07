@@ -14,3 +14,10 @@
 .hero{
     padding-bottom: 3rem;
 }
+
+.hero-actions a{
+    transition: color 0.4s;
+}
+.hero-actions a:hover{
+    color: #3b82f6;
+}
