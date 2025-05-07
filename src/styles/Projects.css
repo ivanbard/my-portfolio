@@ -1,0 +1,86 @@
+.projects-section {
+    padding-bottom: 3rem 0;
+}
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 250px));
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .project-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.25rem;
+    color: black;
+  }
+  
+  .project-desc {
+    font-size: 0.9rem;
+    color: #6a6c6e;
+    flex: 1;
+  }
+  
+  .project-link {
+    text-decoration: underline;
+    font-weight: 500;
+    color: #3b82f6;
+    align-self: flex-start;
+  }
+
+  .more-projects {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #bbb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    padding-bottom: 3rem;
+  }
+  
+  .more-projects:hover {
+    color: #fff;
+  }
+  
+  @media (max-width: 640px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+
+.project-image-frame {
+    background: white;  
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    margin: 0.75rem;
+    flex: 0 0 auto;
+  }
+  
+  /* image within frame */
+  .project-image {
+    display: block; 
+    width: 50%;  
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 260px;  
+    background: #f3f4f6;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+  }
+  
+  /* Make the info fill the remaining space */
+  .project-info {
+    flex: 1;
+    padding-left: 0.75rem;
+    display: flex;
+    flex-direction: column;
+  }
