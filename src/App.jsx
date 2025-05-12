@@ -1,25 +1,25 @@
-import React from 'react'
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import TechGrid from './components/TechGrid';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
+import LandingPage from './components/LandingPage';
+import ProjectsPage from './components/ProjectsPage';
+
 import './styles/globals.css';
-import './App.css'
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
-      <main className='content'>
-        <Hero />
-        <TechGrid />
-        <Projects />
-        <Contact />
+      <main className="content">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+        </Routes>
       </main>
-    </BrowserRouter>
+    </Router>
   );
 }
 
-export default App
+export default App;

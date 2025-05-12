@@ -41,7 +41,7 @@ export default function Projects() {
         ))}
       </div>
 
-      <a href="/projects" className="more-projects">More projects →</a>
+      <a href="/projects" className="more-projects">More projects →</a>
     </section>
   );
 }
