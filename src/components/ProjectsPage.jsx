@@ -16,6 +16,18 @@ const allProjects = [
       img: '/images/duyle.png',
       link: 'https://ivanbard.com'
     },
+    {
+      title: 'To-Do App',
+      desc: 'The classic to-do list used to learn Django',
+      img: '/images/todo.png',
+      link: 'https://github.com/ivanbard/todoapp'
+    },
+    {
+      title: 'Twitter/X recreation',
+      desc: 'A command line Twitter/X recreation in C to showcase DSA knowledge',
+      img: '/images/socialmedia.png',
+      link: 'https://github.com/ivanbard/C-Social-Media'
+    },
   ];
 
 export default function ProjectsPage() {
