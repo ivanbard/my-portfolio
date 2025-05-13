@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/ProjectsPage.css';
+import FadeInSection from './FadeInSection';
 
 // where the list of projects can be added to 
 const allProjects = [
@@ -32,30 +33,32 @@ const allProjects = [
 
 export default function ProjectsPage() {
   return (
-    <section className="projects-page">
-      <h1>All Projects</h1>
+    <FadeInSection>
+      <section className="projects-page">
+        <h1>All Projects</h1>
 
-      <div className="projects-page-grid">
-        {allProjects.map((p) => (
-          <div key={p.title} className="project-page-card">
-            <div
-              className="project-page-image"
-              style={{ backgroundImage: `url(${p.img})` }}
-            />
-            <div className="project-page-info">
-              <h2>{p.title}</h2>
-              <p>{p.desc}</p>
-              <a href={p.link} target="_blank" rel="noreferrer">
-                View
-              </a>
+        <div className="projects-page-grid">
+          {allProjects.map((p) => (
+            <div key={p.title} className="project-page-card">
+              <div
+                className="project-page-image"
+                style={{ backgroundImage: `url(${p.img})` }}
+              />
+              <div className="project-page-info">
+                <h2>{p.title}</h2>
+                <p>{p.desc}</p>
+                <a href={p.link} target="_blank" rel="noreferrer">
+                  View
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <Link to="/" className="back-home">
-        ← Back to Home
-      </Link>
-    </section>
+        <Link to="/" className="back-home">
+          ← Back to Home
+        </Link>
+      </section>
+    </FadeInSection>
   );
 }
