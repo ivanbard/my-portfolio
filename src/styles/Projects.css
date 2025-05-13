@@ -53,7 +53,7 @@
 .project-image-frame {
     background: white;  
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 0;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     margin: 0.75rem;
     flex: 0 0 auto;
@@ -62,8 +62,8 @@
   /* image within frame */
   .project-image {
     display: block; 
-    width: 50%;  
-    height: auto;
+    width: 100%;  
+    height: 125px;
     border-radius: 4px;
   }
 

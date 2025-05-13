@@ -7,7 +7,7 @@ const allProjects = [
     {
       title: 'Walking/Jumping Identifier',
       desc: 'A recognition model which identifies if user is walking or jumping from accelerometer data',
-      img: '/images/sudoku.png',
+      img: '/images/walkingrunning.png',
       link: 'https://github.com/ivanbard/walking-running-292'
     },
     {

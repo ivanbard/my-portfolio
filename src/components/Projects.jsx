@@ -3,16 +3,16 @@ import '../styles/Projects.css';
 
 const projects = [
   {
-    title: 'Proj A',
-    desc: 'Placeholder information for length Short description of project A.',
-    img: '/images/temp.jpg',
-    link: '/projects/a'
+    title: 'Walking/Jumping Identifier',
+    desc: 'Accelerometer identification model',
+    img: '/images/walkingrunning.png',
+    link: 'https://github.com/ivanbard/walking-running-292'
   },
   {
-    title: 'Proj B',
-    desc: 'Placeholder information for length Short description of project B.',
-    img: '/images/temp.jpg',
-    link: '/projects/b'
+    title: 'ivanbard.com',
+    desc: 'A simple portfolio website',
+    img: '/images/ivanbard.png',
+    link: 'https://ivanbard.com'
   }
 ];
 
