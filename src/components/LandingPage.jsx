@@ -10,19 +10,19 @@ export default function LandingPage() {
   return (
     <>
       <FadeInSection>
-        <Hero />
+        <section id="hero"><Hero /></section>
       </FadeInSection>
 
       <FadeInSection delay={0.5}>
-        <TechGrid />
+        <section id="tech"><TechGrid /></section>
       </FadeInSection>
 
       <FadeInSection delay={1}>
-        <Projects />
+        <section id="projects"><Projects /></section>
       </FadeInSection>
 
       <FadeInSection delay={1.5}>
-        <Contact />
+        <section id="contact"><Contact /></section>
       </FadeInSection>
 
     </>
