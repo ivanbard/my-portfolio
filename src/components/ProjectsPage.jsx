@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/ProjectsPage.css';
 
-//temp projects to develop styles with
+// where the list of projects can be added to 
 const allProjects = [
     {
       title: 'Walking/Jumping Identifier',
@@ -13,7 +13,7 @@ const allProjects = [
     {
       title: 'ivanbard.com',
       desc: 'A simple portfolio website',
-      img: '/images/duyle.png',
+      img: '/images/ivanbard.png',
       link: 'https://ivanbard.com'
     },
     {
@@ -23,7 +23,7 @@ const allProjects = [
       link: 'https://github.com/ivanbard/todoapp'
     },
     {
-      title: 'Twitter/X recreation',
+      title: 'Twitter/X Recreation',
       desc: 'A command line Twitter/X recreation in C to showcase DSA knowledge',
       img: '/images/socialmedia.png',
       link: 'https://github.com/ivanbard/C-Social-Media'
