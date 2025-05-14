@@ -5,3 +5,18 @@ a { text-decoration:none; }
 html {
     scroll-behavior: smooth;
 }
+
+:root {
+    color-scheme: light; /* tell the UA to use light controls/scrollbars */
+}
+
+html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+  
+  /* If you have a wrapper or section that’s full‑height, override it too */
+.content-wrapper,
+section {
+    background-color: #ffffff !important;
+}
