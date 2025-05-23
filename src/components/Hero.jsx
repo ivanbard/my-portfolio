@@ -1,6 +1,6 @@
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
 import '../styles/Hero.css';
-
+//add an experience section right below my links? add a education and work experience sections with a slider thing
 export default function Hero() {
   return (
     <section id="hero" className="hero">
