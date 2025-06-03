@@ -25,3 +25,18 @@
 .location{
     color: grey;
 }
+
+.map-container {
+    width: 100%;
+    max-width: 800px;    /* match your content wrapper */
+    height: 200px;       /* choose a height that works for your layout */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+  
+@media (max-width: 640px) {
+    .map-container {
+      height: 300px;
+    }
+}
