@@ -12,6 +12,12 @@ const allProjects = [
       link: 'https://github.com/ivanbard/walking-running-292'
     },
     {
+      title: 'muscl3.com',
+      desc: 'Interactive 3D muscle map and exercise recommender',
+      img: '/images/muscl3.png',
+      link: 'https://muscl3.com'
+    },
+    {
       title: 'ivanbard.com',
       desc: 'A simple portfolio website',
       img: '/images/ivanbard.png',
