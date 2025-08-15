@@ -1,6 +1,6 @@
 //import React from 'react';
 import '../styles/TechGrid.css';
-import { SiPython, SiReact, SiNodedotjs, SiFigma, SiC, SiJavascript, SiDjango } from "react-icons/si";
+import { SiPython, SiReact, SiNodedotjs, SiFigma, SiC, SiTypescript, SiDjango } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
 import { motion } from 'framer-motion';
@@ -11,7 +11,7 @@ const techData = [
   { name: 'Python',      icon: <SiPython /> },
   { name: 'Figma',      icon: <SiFigma /> },
   { name: 'C',      icon: <SiC /> },
-  { name: 'JavaScript',      icon: <SiJavascript /> },
+  { name: 'TypeScript',      icon: <SiTypescript /> },
   { name: 'Java',      icon: <FaJava /> },
   { name: 'Django',      icon: <SiDjango /> },
 ];
