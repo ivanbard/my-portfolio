@@ -18,10 +18,10 @@ const allProjects = [
       link: 'https://muscl3.com'
     },
     {
-      title: 'ivanbard.com',
+      title: 'bardz.ca',
       desc: 'A simple portfolio website',
       img: '/images/ivanbard.png',
-      link: 'https://ivanbard.com'
+      link: 'https://bardz.ca'
     },
     {
       title: 'To-Do App',

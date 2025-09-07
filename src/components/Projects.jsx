@@ -9,10 +9,10 @@ const projects = [
     link: 'https://github.com/ivanbard/walking-running-292'
   },
   {
-    title: 'ivanbard.com',
+    title: 'bardz.ca',
     desc: 'A simple portfolio website',
     img: '/images/ivanbard.png',
-    link: 'https://ivanbard.com'
+    link: 'https://bardz.ca'
   }
 ];
 
