@@ -5,6 +5,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 
 import FadeInSection from './FadeInSection';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function LandingPage() {
   return (
@@ -24,6 +25,8 @@ export default function LandingPage() {
       <FadeInSection delay={1.5}>
         <section id="contact"><Contact /></section>
       </FadeInSection>
+
+      <Analytics />
 
     </>
   );
