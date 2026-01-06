@@ -1,5 +1,5 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
@@ -10,15 +10,19 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <main className="content">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-        </Routes>
-      </main>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="app-wrapper">
+          <Navbar />
+          <main className="content">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
