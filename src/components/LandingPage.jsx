@@ -2,6 +2,7 @@ import Hero from '../components/Hero';
 import TechGrid from '../components/TechGrid';
 import Experience from '../components/Experience';
 import Projects from '../components/Projects';
+import Blog from '../components/Blog';
 import Contact from '../components/Contact';
 import FadeInSection from './FadeInSection';
 import { Analytics } from '@vercel/analytics/react';
@@ -28,6 +29,12 @@ export default function LandingPage() {
       <FadeInSection>
         <section id="projects">
           <Projects />
+        </section>
+      </FadeInSection>
+
+      <FadeInSection>
+        <section id="blog">
+          <Blog />
         </section>
       </FadeInSection>
 

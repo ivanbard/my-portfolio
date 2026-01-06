@@ -4,6 +4,8 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ProjectsPage from './components/ProjectsPage';
+import BlogPage from './components/BlogPage';
+import BlogPost from './components/BlogPost';
 
 import './styles/globals.css';
 import './App.css';
@@ -18,6 +20,8 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
             </Routes>
           </main>
         </div>
