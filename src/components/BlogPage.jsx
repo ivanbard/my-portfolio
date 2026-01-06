@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiArrowLeft, FiCalendar, FiClock, FiArrowRight } from 'react-icons/fi';
-import { blogPosts } from './Blog';
+import blogPosts from '../data/blogPosts';
 import '../styles/BlogPage.css';
 
 export default function BlogPage() {

@@ -1,35 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiCalendar, FiClock } from 'react-icons/fi';
+import blogPosts from '../data/blogPosts';
 import '../styles/Blog.css';
-
-// Blog posts data - add your posts here
-const blogPosts = [
-  {
-    id: 'building-recommendation-engine',
-    title: 'Building a Vacation Recommendation Engine with Python',
-    excerpt: 'How I built a recommendation system using Scikit-learn and GCP that improved accuracy by 15%.',
-    date: 'Jan 2026',
-    readTime: '5 min read',
-    tags: ['Python', 'ML', 'GCP'],
-  },
-  {
-    id: 'getting-started-with-xgboost',
-    title: 'Getting Started with XGBoost for Prediction Models',
-    excerpt: 'A beginner-friendly guide to using XGBoost for building powerful prediction models.',
-    date: 'Dec 2025',
-    readTime: '8 min read',
-    tags: ['Machine Learning', 'XGBoost', 'Data Science'],
-  },
-  {
-    id: 'my-internship-journey',
-    title: 'My Data Science Internship Journey',
-    excerpt: 'Reflections on my experiences as a data science intern and lessons learned along the way.',
-    date: 'Nov 2025',
-    readTime: '4 min read',
-    tags: ['Career', 'Internship', 'Advice'],
-  },
-];
 
 export default function Blog() {
   return (
@@ -104,6 +77,3 @@ export default function Blog() {
     </section>
   );
 }
-
-// Export posts for use in other components
-export { blogPosts };
