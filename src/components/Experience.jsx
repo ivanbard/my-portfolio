@@ -4,6 +4,24 @@ import '../styles/Experience.css';
 
 const experiences = [
   {
+    type: 'work',
+    title: "Data Science Intern",
+    organization: "M2M Technologies",
+    location: "Toronto, ON",
+    period: "Mar 2025 - Present",
+    description: "Developed and implemented a vacation recommedation search engine using Python, Scikit-learn, and GCP, allowing the client to suggest accurate vacation packages to users based on their preferences and past behavior. Improved recommendation accuracy by 15% through data preprocessing, feature engineering, and model tuning. Collaborated with cross-functional teams to optimize data pipelines and develop an XGBoost model for enhanced wave energy converter location prediction performance. Designed and integrated an LLM-based journal prompt generation and analysis tool using OpenAI's API and deployed on AWS, enhancing user engagement, and optimizing users mental health journeys.",
+    current: true
+  },
+  {
+    type: 'work',
+    title: "Data Analyst Intern",
+    organization: "Michael Garron Hospital",
+    location: "Toronto, ON",
+    period: "May 2025 - Aug 2025",
+    description: "Developed and implemented data visualization dashboards using Python, SQL, and PowerBI to help hostital staff monitor and understand the IPP teams load and metrics for optimal resource allocation and referral planning. Developed a virtual simulation lab environment using FrameVR to facilitate remote training for hospital staff and easier onboarding of new team members and procedure refreshes.",
+    current: false
+  },
+  {
     type: 'education',
     title: "Computer Engineering",
     organization: "Queen's University",
@@ -12,16 +30,6 @@ const experiences = [
     description: "Pursuing a degree in Computer Engineering with a focus on software development and data science.",
     current: true
   },
-  // Add more experiences here as needed
-  // {
-  //   type: 'work',
-  //   title: "Software Developer Intern",
-  //   organization: "Company Name",
-  //   location: "Toronto, ON",
-  //   period: "Summer 2024",
-  //   description: "Worked on building web applications using React and Node.js.",
-  //   current: false
-  // }
 ];
 
 export default function Experience() {
