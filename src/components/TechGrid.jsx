@@ -43,17 +43,15 @@ export default function TechGrid() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        duration: 0.4
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 1 },
     visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.4, ease: "easeOut" }
+      opacity: 1
     }
   };
 

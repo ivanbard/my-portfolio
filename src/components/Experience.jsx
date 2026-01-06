@@ -9,7 +9,7 @@ const experiences = [
     organization: "M2M Technologies",
     location: "Toronto, ON",
     period: "Mar 2025 - Present",
-    description: "Developed and implemented a vacation recommedation search engine using Python, Scikit-learn, and GCP, allowing the client to suggest accurate vacation packages to users based on their preferences and past behavior. Improved recommendation accuracy by 15% through data preprocessing, feature engineering, and model tuning. Collaborated with cross-functional teams to optimize data pipelines and develop an XGBoost model for enhanced wave energy converter location prediction performance. Designed and integrated an LLM-based journal prompt generation and analysis tool using OpenAI's API and deployed on AWS, enhancing user engagement, and optimizing users mental health journeys.",
+    description: "Developed and implemented a vacation recommendation search engine using Python, Scikit-learn, and GCP, allowing the client to suggest accurate vacation packages to users based on their preferences and past behavior. Improved recommendation accuracy by 15% through data preprocessing, feature engineering, and model tuning. Collaborated with cross-functional teams to optimize data pipelines and develop an XGBoost model for enhanced wave energy converter location prediction performance. Designed and integrated an LLM-based journal prompt generation and analysis tool using OpenAI's API and deployed on AWS, enhancing user engagement, and optimizing users mental health journeys.",
     current: true
   },
   {
@@ -18,7 +18,7 @@ const experiences = [
     organization: "Michael Garron Hospital",
     location: "Toronto, ON",
     period: "May 2025 - Aug 2025",
-    description: "Developed and implemented data visualization dashboards using Python, SQL, and PowerBI to help hostital staff monitor and understand the IPP teams load and metrics for optimal resource allocation and referral planning. Developed a virtual simulation lab environment using FrameVR to facilitate remote training for hospital staff and easier onboarding of new team members and procedure refreshes.",
+    description: "Developed and implemented data visualization dashboards using Python, SQL, and PowerBI to help hospital staff monitor and understand the IPP teams load and metrics for optimal resource allocation and referral planning. Developed a virtual simulation lab environment using FrameVR to facilitate remote training for hospital staff and easier onboarding of new team members and procedure refreshes.",
     current: false
   },
   {
@@ -38,17 +38,15 @@ export default function Experience() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
+        duration: 0.4
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 1 },
     visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
+      opacity: 1
     }
   };
 

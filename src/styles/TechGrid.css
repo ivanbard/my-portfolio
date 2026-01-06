@@ -1,11 +1,11 @@
 .tech-section {
-  padding: 5rem 0;
+  padding: 2rem 0;
 }
 
 .tech-categories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .tech-category {
