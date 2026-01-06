@@ -12,13 +12,15 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Navbar />
-        <main className="content">
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-          </Routes>
-        </main>
+        <div className="app-wrapper">
+          <Navbar />
+          <main className="content">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+            </Routes>
+          </main>
+        </div>
       </Router>
     </ThemeProvider>
   );

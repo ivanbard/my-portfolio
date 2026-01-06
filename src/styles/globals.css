@@ -1,5 +1,6 @@
 /* ===== CSS Variables & Theme ===== */
-:root {
+:root,
+html {
   /* Dark theme (default) */
   --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
@@ -39,7 +40,8 @@
 }
 
 /* Light theme */
-[data-theme="light"] {
+[data-theme="light"],
+[data-theme="light"] html {
   --bg-primary: #fafafa;
   --bg-secondary: #f4f4f5;
   --bg-card: #ffffff;

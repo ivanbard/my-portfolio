@@ -13,36 +13,60 @@ export default function Hero() {
   const { theme } = useTheme();
 
   useEffect(() => {
+    // Don't initialize if container isn't ready
+    if (!mapContainerRef.current) return;
+
     const mapStyle = theme === 'dark' 
       ? 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
       : 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
+    // Safely remove existing map
     if (mapRef.current) {
-      mapRef.current.remove();
+      try {
+        mapRef.current.remove();
+      } catch (e) {
+        // Map already removed, ignore
+      }
+      mapRef.current = null;
     }
 
-    const map = new maplibregl.Map({
-      container: mapContainerRef.current,
-      style: mapStyle,
-      center: [-79.387083, 43.642556],
-      zoom: 10,
-      attributionControl: false,
-      interactive: true
-    });
+    try {
+      const map = new maplibregl.Map({
+        container: mapContainerRef.current,
+        style: mapStyle,
+        center: [-79.387083, 43.642556],
+        zoom: 10,
+        attributionControl: false,
+        interactive: true
+      });
 
-    mapRef.current = map;
+      mapRef.current = map;
 
-    new maplibregl.Marker({ color: '#8b5cf6' })
-      .setLngLat([-79.387083, 43.642556])
-      .addTo(map);
+      map.on('load', () => {
+        new maplibregl.Marker({ color: '#8b5cf6' })
+          .setLngLat([-79.387083, 43.642556])
+          .addTo(map);
+        
+        new maplibregl.Marker({ color: '#3b82f6' })
+          .setLngLat([-76.49512428602218, 44.225376158376385])
+          .addTo(map);
+      });
+
+      map.addControl(new maplibregl.NavigationControl(), 'top-right');
+    } catch (e) {
+      console.error('Error initializing map:', e);
+    }
     
-    new maplibregl.Marker({ color: '#3b82f6' })
-      .setLngLat([-76.49512428602218, 44.225376158376385])
-      .addTo(map);
-
-    map.addControl(new maplibregl.NavigationControl(), 'top-right');
-    
-    return () => map.remove();
+    return () => {
+      if (mapRef.current) {
+        try {
+          mapRef.current.remove();
+        } catch (e) {
+          // Ignore cleanup errors
+        }
+        mapRef.current = null;
+      }
+    };
   }, [theme]);
 
   const containerVariants = {
