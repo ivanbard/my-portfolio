@@ -1,23 +1,27 @@
+/* App Layout */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 0em;
-  padding: 0em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  min-height: 100vh;
 }
 
 .content {
-  max-width: 800px; /*approx navbar length*/
-  margin: 0 auto;
-  padding: 2rem 1rem;  
-  text-align: left; /* left justify text*/
+  padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Landing page specific */
+.landing-page {
+  min-height: 100vh;
+}
+
+/* Smooth page transitions */
+.content > * {
+  animation: pageEnter 0.5s ease-out;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
