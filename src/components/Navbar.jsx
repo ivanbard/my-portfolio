@@ -97,10 +97,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
-          <a href="/resume.pdf" className="nav-resume-link" target="_blank" rel="noreferrer">
-            Resume
-          </a>
         </div>
       </div>
     </nav>
