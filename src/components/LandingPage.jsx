@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import GitHubChart from './GitHubChart';
 import sections from '../data/sections';
 import '../styles/Home.css';
 
@@ -7,19 +8,20 @@ const sectionCopy = {
   projects: 'Software projects and experiments.',
   about: 'Background and current work.',
 };
-
 export default function LandingPage() {
   return (
     <section className="page home-page">
       <div className="page-shell home-index">
-        <h1>
+        <p className="home-intro-line">
           Computer engineering student building software and writing about systems,
           machine learning, and product work.
-        </h1>
-        <p className="home-summary">
+        </p>
+        <p className="home-intro-line">
           Based in Toronto and Kingston. Currently working as a Data Science Intern at
           M2M Technologies and studying at Queen&apos;s University.
         </p>
+
+        <GitHubChart />
 
         <div className="home-links" aria-label="Site index">
           {sections.map((section) => {

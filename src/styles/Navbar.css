@@ -3,12 +3,9 @@
   top: 0;
   z-index: 50;
   background: var(--bg);
-  border-bottom: 1px solid transparent;
 }
 
-.navbar.scrolled {
-  border-color: var(--line);
-}
+.navbar.scrolled {}
 
 .navbar-container {
   width: min(calc(100% - 2rem), var(--content-max));
@@ -40,7 +37,7 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.38rem 0.55rem;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   background: transparent;
   color: var(--muted);
   font: inherit;
@@ -50,7 +47,7 @@
 .nav-selector-trigger.open,
 .nav-selector-trigger:hover {
   color: var(--text);
-  border-color: var(--line-strong);
+  background: rgba(31, 31, 27, 0.04);
 }
 
 .nav-selector-icon {
