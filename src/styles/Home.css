@@ -1,0 +1,90 @@
+.home-page {
+  padding: 2.5rem 0 2rem;
+}
+
+.home-index {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.home-intro-line {
+  max-width: 34rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.home-links {
+  display: grid;
+  margin-top: 0.75rem;
+  gap: 0.55rem;
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.2rem 0;
+}
+
+.home-link-text {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.home-link-title {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.home-link-copy {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.home-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--section-accent) 14%, transparent);
+  color: var(--section-accent);
+  opacity: 0;
+  transform: translateY(2px) scale(0.92);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.home-link:hover .home-link-title {
+  color: var(--section-accent);
+}
+
+.home-link:hover .home-link-icon {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (hover: none) {
+  .home-link-icon {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.home-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.2rem;
+  margin-top: 2rem;
+}
+
+.home-social-link {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.home-social-link:hover {
+  color: var(--text);
+}

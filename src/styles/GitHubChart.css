@@ -1,0 +1,51 @@
+.github-chart {
+  display: grid;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 34rem;
+  margin-top: 0.55rem;
+  color: var(--muted);
+}
+
+.github-chart-label,
+.github-chart-fallback {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.github-chart-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.18rem;
+  align-items: stretch;
+}
+
+.github-chart-cell {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  min-width: 0;
+  border-radius: 2px;
+  background: var(--cell-color);
+}
+
+.github-chart-cell-placeholder {
+  opacity: 0.28;
+}
+
+.github-chart-cell-loading {
+  background: #e8e3d8;
+  opacity: 0.5;
+}
+
+.github-chart:hover .github-chart-label,
+.github-chart:hover .github-chart-fallback {
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .github-chart-grid {
+    gap: 0.12rem;
+  }
+}

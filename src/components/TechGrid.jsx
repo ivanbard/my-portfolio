@@ -5,7 +5,7 @@ import {
   SiJavascript, SiHtml5
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const techCategories = [
   {
@@ -58,7 +58,7 @@ export default function TechGrid() {
   return (
     <section id="tech" className="tech-section">
       <div className="container">
-        <motion.div 
+        <Motion.div 
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,11 +67,11 @@ export default function TechGrid() {
         >
           <h2>Tech Stack</h2>
           <p className="section-subtitle">Technologies I work with regularly</p>
-        </motion.div>
+        </Motion.div>
 
         <div className="tech-categories">
           {techCategories.map((category, catIndex) => (
-            <motion.div 
+            <Motion.div 
               key={category.title}
               className="tech-category"
               initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function TechGrid() {
               transition={{ duration: 0.5, delay: catIndex * 0.1 }}
             >
               <h3 className="category-title">{category.title}</h3>
-              <motion.div 
+              <Motion.div 
                 className="tech-grid"
                 variants={containerVariants}
                 initial="hidden"
@@ -88,7 +88,7 @@ export default function TechGrid() {
                 viewport={{ once: true }}
               >
                 {category.items.map((tech) => (
-                  <motion.div 
+                  <Motion.div 
                     key={tech.name}
                     className="tech-card"
                     variants={itemVariants}
@@ -100,10 +100,10 @@ export default function TechGrid() {
                   >
                     <div className="tech-icon">{tech.icon}</div>
                     <span className="tech-name">{tech.name}</span>
-                  </motion.div>
+                  </Motion.div>
                 ))}
-              </motion.div>
-            </motion.div>
+              </Motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>

@@ -1,122 +1,78 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FiExternalLink, FiGithub, FiArrowRight } from 'react-icons/fi';
+import { motion as Motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FiArrowRight, FiExternalLink, FiGithub } from 'react-icons/fi';
+import projects from '../data/projects';
 import '../styles/Projects.css';
 
-const projects = [
-  {
-    title: 'Walking/Jumping Identifier',
-    desc: 'Machine learning model that identifies walking vs jumping patterns using accelerometer data. Built with Python and scikit-learn.',
-    img: '/images/walkingrunning.png',
-    link: 'https://github.com/ivanbard/walking-running-292',
-    github: 'https://github.com/ivanbard/walking-running-292',
-    tags: ['Python', 'ML', 'Data Science']
-  },
-  {
-    title: 'bardz.ca',
-    desc: 'Personal portfolio website built with React, featuring modern design, animations, and interactive elements.',
-    img: '/images/ivanbard.png',
-    link: 'https://bardz.ca',
-    github: 'https://github.com/ivanbard/my-portfolio',
-    tags: ['React', 'Framer Motion', 'CSS']
-  }
-];
-
 export default function Projects() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.4
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 1 },
-    visible: { 
-      opacity: 1
-    }
-  };
-
   return (
-    <section id="projects" className="projects-section">
-      <div className="container">
-        <motion.div 
-          className="section-header"
+    <section className="projects-section">
+      <div className="page-shell">
+        <Motion.div
+          className="section-heading"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
         >
-          <h2>Featured Projects</h2>
-          <p className="section-subtitle">Some of my recent work</p>
-        </motion.div>
+          <p className="section-kicker">Selected Projects</p>
+          <h2>A few pieces of work that show how I like to build.</h2>
+          <p className="section-description">
+            Less of a grid, more of a reading list: what the project was, how it was built, and where to see it.
+          </p>
+        </Motion.div>
 
-        <motion.div 
-          className="projects-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {projects.map((project) => (
-            <motion.article 
-              key={project.title} 
-              className="project-card"
-              variants={itemVariants}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="project-image-wrapper">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="project-image"
-                />
-                <div className="project-overlay">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="overlay-btn">
-                    <FiExternalLink size={20} />
-                  </a>
-                  {project.github && (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="overlay-btn">
-                      <FiGithub size={20} />
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-desc">{project.desc}</p>
-                
-                <div className="project-tags">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="project-tag">{tag}</span>
-                  ))}
-                </div>
-
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                  View Project <FiArrowRight size={16} />
-                </a>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-
-        <motion.div 
-          className="projects-cta"
+        <Motion.div
+          className="project-feature-list"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
         >
-          <a href="/projects" className="btn btn-secondary">
-            View All Projects
-            <FiArrowRight />
-          </a>
-        </motion.div>
+          {projects.slice(0, 3).map((project) => (
+            <article key={project.title} className="project-feature-item">
+              <div className="project-feature-image">
+                <img src={project.img} alt={project.title} />
+              </div>
+
+              <div className="project-feature-copy">
+                <div className="project-feature-header">
+                  <h3>{project.title}</h3>
+                  <div className="project-feature-links">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-link">
+                      Visit <FiExternalLink size={15} />
+                    </a>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-link">
+                        Code <FiGithub size={15} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <p>{project.desc}</p>
+
+                <div className="project-feature-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </Motion.div>
+
+        <Motion.div
+          className="section-actions"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ delay: 0.05, duration: 0.35 }}
+        >
+          <Link to="/projects" className="text-link">
+            View the full project index <FiArrowRight size={16} />
+          </Link>
+        </Motion.div>
       </div>
     </section>
   );

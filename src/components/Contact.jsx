@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { FiMail, FiGithub, FiLinkedin, FiArrowUpRight } from 'react-icons/fi';
+import { motion as Motion } from 'framer-motion';
+import { FiArrowUpRight } from 'react-icons/fi';
 import '../styles/Contact.css';
 
 const contactLinks = [
@@ -7,93 +7,66 @@ const contactLinks = [
     name: 'Email',
     value: 'ivanbardziyan@gmail.com',
     href: 'mailto:ivanbardziyan@gmail.com',
-    icon: <FiMail size={24} />,
-    description: 'Drop me a line'
+    description: 'For opportunities, collaboration, or a good technical conversation.',
   },
   {
     name: 'GitHub',
     value: '@ivanbard',
     href: 'https://github.com/ivanbard',
-    icon: <FiGithub size={24} />,
-    description: 'Check out my code'
+    description: 'Code, experiments, and project repositories.',
   },
   {
     name: 'LinkedIn',
     value: 'Ivan Bardziyan',
     href: 'https://linkedin.com/in/ivanbardziyan',
-    icon: <FiLinkedin size={24} />,
-    description: "Let's connect"
-  }
+    description: 'Professional background and current work.',
+  },
 ];
 
 export default function Contact() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.4
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 1 },
-    visible: { 
-      opacity: 1
-    }
-  };
-
   return (
-    <section id="contact" className="contact-section">
-      <div className="container">
-        <motion.div 
+    <section className="contact-section">
+      <div className="page-shell">
+        <Motion.div
           className="contact-wrapper"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
         >
           <div className="contact-header">
-            <h2>Let's Work Together</h2>
-            <p className="contact-subtitle">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            <p className="section-kicker">Contact</p>
+            <h2>If something here feels relevant, send me a note.</h2>
+            <p className="section-description">
+              I&apos;m most interested in thoughtful software work, internship opportunities, and teams that care about both technical depth and the final experience.
             </p>
           </div>
 
-          <motion.div 
-            className="contact-grid"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+          <Motion.div
+            className="contact-list"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-120px' }}
+            transition={{ delay: 0.05, duration: 0.35 }}
           >
             {contactLinks.map((link) => (
-              <motion.a
+              <a
                 key={link.name}
                 href={link.href}
                 target={link.name !== 'Email' ? '_blank' : undefined}
                 rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-                className="contact-card"
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -4 }}
-                transition={{ duration: 0.2 }}
+                className="contact-item"
               >
-                <div className="contact-card-icon">{link.icon}</div>
-                <div className="contact-card-content">
-                  <span className="contact-card-name">{link.name}</span>
-                  <span className="contact-card-value">{link.value}</span>
-                  <span className="contact-card-desc">{link.description}</span>
+                <div className="contact-item-copy">
+                  <span className="contact-item-name">{link.name}</span>
+                  <strong>{link.value}</strong>
+                  <p>{link.description}</p>
                 </div>
-                <FiArrowUpRight className="contact-card-arrow" size={20} />
-              </motion.a>
+                <FiArrowUpRight size={18} />
+              </a>
             ))}
-          </motion.div>
-
-          <div className="contact-footer">
-            <p>Based in <span className="gradient-text">Toronto, Ontario</span></p>
-          </div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </div>
     </section>
   );

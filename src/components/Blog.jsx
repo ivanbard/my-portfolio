@@ -1,78 +1,70 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiCalendar, FiClock } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import blogPosts from '../data/blogPosts';
 import '../styles/Blog.css';
 
 export default function Blog() {
   return (
-    <section id="blog" className="blog-section">
-      <div className="container">
-        <motion.div 
-          className="section-header"
+    <section className="blog-section">
+      <div className="page-shell">
+        <Motion.div
+          className="section-heading"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
         >
-          <h2>Blog</h2>
-          <p className="section-subtitle">Thoughts, tutorials, and insights</p>
-        </motion.div>
+          <p className="section-kicker">Writing</p>
+          <h2>Recent notes on systems, engineering, and learning in public.</h2>
+          <p className="section-description">
+            The site now opens with writing because that is where the reasoning behind the work lives.
+          </p>
+        </Motion.div>
 
-        <motion.div 
-          className="blog-grid"
+        <Motion.div
+          className="editorial-list"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
         >
           {blogPosts.slice(0, 3).map((post) => (
-            <Link 
-              key={post.id} 
-              to={`/blog/${post.id}`}
-              className="blog-card"
-            >
-              <div className="blog-card-content">
-                <div className="blog-card-meta">
-                  <span className="blog-date">
-                    <FiCalendar size={14} />
-                    {post.date}
-                  </span>
-                  <span className="blog-read-time">
-                    <FiClock size={14} />
-                    {post.readTime}
-                  </span>
-                </div>
-                
-                <h3 className="blog-card-title">{post.title}</h3>
-                <p className="blog-card-excerpt">{post.excerpt}</p>
-                
-                <div className="blog-card-tags">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="blog-tag">{tag}</span>
-                  ))}
-                </div>
-                
-                <span className="blog-card-link">
-                  Read more <FiArrowRight size={14} />
-                </span>
+            <Link key={post.id} to={`/blog/${post.id}`} className="editorial-list-item">
+              <div className="editorial-item-meta">
+                <span>{post.date}</span>
+                <span>{post.readTime}</span>
               </div>
+
+              <div className="editorial-item-main">
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+              </div>
+
+              <div className="editorial-item-tags">
+                {post.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+
+              <span className="editorial-arrow">
+                Read <FiArrowRight size={16} />
+              </span>
             </Link>
           ))}
-        </motion.div>
+        </Motion.div>
 
-        <motion.div 
-          className="blog-cta"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+        <Motion.div
+          className="section-actions"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-120px' }}
+          transition={{ delay: 0.05, duration: 0.35 }}
         >
-          <Link to="/blog" className="btn btn-secondary">
-            View All Posts
-            <FiArrowRight />
+          <Link to="/blog" className="text-link">
+            Browse all posts <FiArrowRight size={16} />
           </Link>
-        </motion.div>
+        </Motion.div>
       </div>
     </section>
   );

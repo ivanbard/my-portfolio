@@ -1,96 +1,108 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
-import ThemeToggle from './ThemeToggle';
+import { useEffect, useRef, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { FiChevronDown } from 'react-icons/fi';
+import sections, { getActiveSection } from '../data/sections';
 import '../styles/Navbar.css';
-
-const navLinks = [
-  { name: 'Home', href: '/#hero' },
-  { name: 'Tech', href: '/#tech' },
-  { name: 'Experience', href: '/#experience' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Blog', href: '/#blog' },
-  { name: 'Contact', href: '/#contact' },
-];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSelectorOpen, setIsSelectorOpen] = useState(false);
   const location = useLocation();
+  const selectorRef = useRef(null);
+  const activeSection = getActiveSection(location.pathname);
+  const ActiveIcon = activeSection?.icon;
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 8);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
-    setIsMobileMenuOpen(false);
+    setIsSelectorOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (!selectorRef.current?.contains(event.target)) {
+        setIsSelectorOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsSelectorOpen(false);
+      }
+    };
+
+    window.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('mousedown', handlePointerDown);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
-    <motion.nav 
-      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <span className="logo-text">ivan</span>
-          <span className="logo-accent">bard</span>
+          Ivan Bardziyan
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="nav-links">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a href={link.href} className="nav-link">
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-
         <div className="navbar-actions">
-          <ThemeToggle />
-          
-          {/* Mobile menu button */}
-          <button 
-            className="mobile-menu-btn"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
+          <div className="nav-selector" ref={selectorRef}>
+            <button
+              type="button"
+              className={`nav-selector-trigger ${isSelectorOpen ? 'open' : ''}`}
+              onClick={() => setIsSelectorOpen((open) => !open)}
+              aria-haspopup="menu"
+              aria-expanded={isSelectorOpen}
+              aria-label="Open section selector"
+            >
+              <span
+                className={`nav-selector-icon ${activeSection ? 'active' : ''}`}
+                style={activeSection ? { '--section-accent': activeSection.color } : undefined}
+              >
+                {ActiveIcon ? <ActiveIcon size={14} /> : <FiChevronDown size={14} />}
+              </span>
+              <span className="nav-selector-label">{activeSection?.name ?? 'Sections'}</span>
+              <FiChevronDown className="nav-selector-caret" size={14} />
+            </button>
+
+            {isSelectorOpen && (
+              <div className="nav-selector-menu" role="menu" aria-label="Section navigation">
+                {sections.map((section) => {
+                  const Icon = section.icon;
+
+                  return (
+                    <NavLink
+                      key={section.key}
+                      to={section.to}
+                      className={({ isActive }) => `nav-selector-item ${isActive ? 'active' : ''}`}
+                      style={{ '--section-accent': section.color }}
+                      role="menuitem"
+                    >
+                      <span className="nav-selector-item-icon" aria-hidden="true">
+                        <Icon size={15} />
+                      </span>
+                      <span>{section.name}</span>
+                    </NavLink>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          <a href="/resume.pdf" className="nav-resume-link" target="_blank" rel="noreferrer">
+            Resume
+          </a>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {isMobileMenuOpen && (
-        <motion.div 
-          className="mobile-menu"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2 }}
-        >
-          {navLinks.map((link) => (
-            <a 
-              key={link.name}
-              href={link.href} 
-              className="mobile-nav-link"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
-        </motion.div>
-      )}
-    </motion.nav>
+    </nav>
   );
 }
