@@ -48,7 +48,7 @@ function renderMarkdown(content) {
   };
 
   lines.forEach((rawLine) => {
-    const line = rawLine.trimEnd();
+    const line = rawLine.trim();
 
     if (line.startsWith('```')) {
       flushParagraph();
