@@ -1,86 +1,49 @@
-import { motion as Motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Experience from '../components/Experience';
-import Projects from '../components/Projects';
-import Blog from '../components/Blog';
-import Contact from '../components/Contact';
-import FadeInSection from './FadeInSection';
 import '../styles/Home.css';
 
 export default function LandingPage() {
   return (
-    <div className="home-page">
-      <section className="home-hero">
-        <div className="page-shell">
-          <Motion.div
-            className="home-hero-grid"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-          >
-            <div className="home-intro">
-              <p className="eyebrow">Ivan Bardziyan</p>
-              <h1>I build software carefully and write about the systems behind it.</h1>
-              <p className="home-intro-copy">
-                I&apos;m a computer engineering student in Ontario working across machine learning,
-                product-facing software, and systems-oriented projects. This site now acts more like a
-                working notebook: recent writing first, selected work next, and the context around both.
-              </p>
+    <section className="page home-page">
+      <div className="page-shell home-index">
+        <p className="home-name">Ivan Bardziyan</p>
+        <h1>
+          Computer engineering student building software and writing about systems,
+          machine learning, and product work.
+        </h1>
+        <p className="home-summary">
+          Based in Toronto and Kingston. Currently working as a Data Science Intern at
+          M2M Technologies and studying at Queen&apos;s University.
+        </p>
 
-              <div className="home-actions">
-                <Link to="/blog" className="button-link">
-                  Start with writing
-                </Link>
-                <Link to="/projects" className="button-link button-link-secondary">
-                  Browse projects
-                </Link>
-                <Link to="/about" className="text-link">
-                  More about me
-                </Link>
-              </div>
-            </div>
+        <div className="home-links" aria-label="Site index">
+          <Link to="/blog" className="home-link">
+            <span className="home-link-title">Writing</span>
+            <span className="home-link-copy">Notes on embedded systems, machine learning, and internships.</span>
+          </Link>
 
-            <aside className="home-aside">
-              <div className="home-note">
-                <span className="note-label">Currently</span>
-                <p>Data Science Intern at M2M Technologies and studying at Queen&apos;s University.</p>
-              </div>
-              <div className="home-note">
-                <span className="note-label">Focus</span>
-                <p>Embedded systems, machine learning, product engineering, and quieter interface design.</p>
-              </div>
-              <div className="home-note">
-                <span className="note-label">Based in</span>
-                <p>Toronto and Kingston, Ontario.</p>
-              </div>
-            </aside>
-          </Motion.div>
+          <Link to="/projects" className="home-link">
+            <span className="home-link-title">Projects</span>
+            <span className="home-link-copy">Software projects, experiments, and things I&apos;ve built.</span>
+          </Link>
+
+          <Link to="/about" className="home-link">
+            <span className="home-link-title">About</span>
+            <span className="home-link-copy">Background, current work, and what I want to keep doing.</span>
+          </Link>
         </div>
-      </section>
 
-      <FadeInSection>
-        <section className="home-section">
-          <Blog />
-        </section>
-      </FadeInSection>
-
-      <FadeInSection>
-        <section className="home-section">
-          <Projects />
-        </section>
-      </FadeInSection>
-
-      <FadeInSection>
-        <section className="home-section">
-          <Experience />
-        </section>
-      </FadeInSection>
-
-      <FadeInSection>
-        <section className="home-section">
-          <Contact />
-        </section>
-      </FadeInSection>
-    </div>
+        <div className="home-socials" aria-label="Contact and social links">
+          <a href="mailto:ivanbardziyan@gmail.com" className="home-social-link">
+            Email
+          </a>
+          <a href="https://github.com/ivanbard" target="_blank" rel="noreferrer" className="home-social-link">
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/ivanbardziyan" target="_blank" rel="noreferrer" className="home-social-link">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

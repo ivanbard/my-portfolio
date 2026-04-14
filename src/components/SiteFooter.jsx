@@ -5,10 +5,7 @@ export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="page-shell site-footer-inner">
-        <div>
-          <p className="site-footer-title">Ivan Bardziyan</p>
-          <p className="site-footer-copy">Writing about systems, software, and the work behind the interface.</p>
-        </div>
+        <p className="site-footer-copy">Ivan Bardziyan</p>
 
         <nav className="site-footer-links" aria-label="Footer">
           <Link to="/blog">Writing</Link>

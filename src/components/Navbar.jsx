@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { motion as Motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import '../styles/Navbar.css';
 
@@ -18,7 +17,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      setIsScrolled(window.scrollY > 8);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -30,15 +29,10 @@ export default function Navbar() {
   }, [location]);
 
   return (
-    <Motion.nav
-      className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.45, ease: 'easeOut' }}
-    >
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <span className="logo-text">Ivan Bardziyan</span>
+          Ivan Bardziyan
         </Link>
 
         <ul className="nav-links">
@@ -53,31 +47,24 @@ export default function Navbar() {
               </NavLink>
             </li>
           ))}
+          <li>
+            <a href="/resume.pdf" className="nav-link" target="_blank" rel="noreferrer">
+              Resume
+            </a>
+          </li>
         </ul>
 
-        <div className="navbar-actions">
-          <a href="/resume.pdf" className="resume-link" target="_blank" rel="noreferrer">
-            Resume
-          </a>
-
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
-          </button>
-        </div>
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+        </button>
       </div>
 
       {isMobileMenuOpen && (
-        <Motion.div
-          className="mobile-menu"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-        >
+        <div className="mobile-menu">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -91,15 +78,15 @@ export default function Navbar() {
           ))}
           <a
             href="/resume.pdf"
-            className="mobile-nav-link mobile-resume-link"
+            className="mobile-nav-link"
             target="_blank"
             rel="noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Resume
           </a>
-        </Motion.div>
+        </div>
       )}
-    </Motion.nav>
+    </nav>
   );
 }

@@ -7,21 +7,5 @@
 }
 
 .content {
-  min-height: calc(100vh - 160px);
-}
-
-.content > * {
-  animation: pageEnter 0.42s ease-out;
-}
-
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  min-height: calc(100vh - 120px);
 }

@@ -1,83 +1,59 @@
 .projects-page {
-  padding: 7rem 0 5rem;
+  padding: 4rem 0 4rem;
 }
 
 .projects-page-list {
-  display: grid;
-  gap: 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .projects-page-item {
   display: grid;
-  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.5fr);
-  gap: 1.5rem;
-  padding: 1.4rem 0;
-  border-top: 1px solid var(--line);
-}
-
-.projects-page-item:last-child {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 2rem;
+  padding: 1rem 0;
   border-bottom: 1px solid var(--line);
 }
 
-.projects-page-image {
-  overflow: hidden;
-  background: var(--bg-strong);
-  aspect-ratio: 4 / 3;
+.projects-page-main h2 {
+  font-size: 1.14rem;
+  margin-bottom: 0.3rem;
 }
 
-.projects-page-image img {
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-base);
+.projects-page-main p {
+  color: var(--muted);
 }
 
-.projects-page-item:hover .projects-page-image img {
-  transform: scale(1.03);
-}
-
-.projects-page-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.projects-page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 1rem;
-}
-
-.projects-page-header h2 {
-  font-size: clamp(1.6rem, 3vw, 2.15rem);
+.projects-page-meta {
+  min-width: 140px;
+  text-align: right;
 }
 
 .projects-page-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem 1rem;
+  justify-content: flex-end;
+  gap: 0.9rem;
+}
+
+.projects-page-links a,
+.projects-page-tags {
+  color: var(--muted);
+  font-size: 0.94rem;
 }
 
 .projects-page-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+  margin-top: 0.35rem;
 }
 
-.projects-page-tags span {
-  padding: 0.24rem 0.55rem;
-  border: 1px solid var(--line);
-  background: rgba(255, 252, 247, 0.7);
-  font-size: 0.74rem;
-  color: var(--muted-strong);
-}
-
-@media (max-width: 860px) {
+@media (max-width: 640px) {
   .projects-page-item {
     grid-template-columns: 1fr;
   }
 
-  .projects-page-header {
-    flex-direction: column;
+  .projects-page-meta {
+    text-align: left;
+  }
+
+  .projects-page-links {
+    justify-content: flex-start;
   }
 }

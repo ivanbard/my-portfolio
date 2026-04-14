@@ -1,58 +1,60 @@
 .home-page {
-  padding: 6.5rem 0 0;
+  padding: 4rem 0 3rem;
 }
 
-.home-hero {
-  padding-bottom: 4.5rem;
-}
-
-.home-hero-grid {
+.home-index {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.9fr);
-  gap: 3rem;
-  align-items: end;
+  gap: 1rem;
 }
 
-.home-intro h1 {
-  max-width: 13ch;
+.home-name {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-.home-intro-copy {
+.home-summary {
   max-width: 42rem;
-  margin-top: 1.5rem;
-  font-size: 1.14rem;
+  color: var(--muted);
 }
 
-.home-actions {
+.home-links {
+  display: grid;
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.home-link {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-link-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.home-link-copy {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.home-socials {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-top: 2rem;
-}
-
-.home-aside {
-  display: grid;
-  gap: 1.1rem;
-  align-self: start;
-  padding-top: 1rem;
-}
-
-.home-note {
+  gap: 0.9rem 1.2rem;
+  margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
 }
 
-.home-note p {
-  max-width: 26rem;
+.home-social-link {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-.home-section {
-  padding: 4rem 0;
-}
-
-@media (max-width: 860px) {
-  .home-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+.home-social-link:hover {
+  color: var(--text);
 }
