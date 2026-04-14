@@ -9,3 +9,8 @@
 .content {
   min-height: calc(100vh - 120px);
 }
+
+.route-transition {
+  min-height: inherit;
+  will-change: opacity, transform;
+}

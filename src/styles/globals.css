@@ -101,7 +101,9 @@ img {
 }
 
 .page-header {
-  margin-bottom: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
 }
 
 .page-header h1 {
@@ -111,16 +113,16 @@ img {
 
 .page-intro {
   max-width: 34rem;
-  margin-top: 0.55rem;
   color: var(--muted);
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
   color: var(--muted);
   font-size: 0.9rem;
 }

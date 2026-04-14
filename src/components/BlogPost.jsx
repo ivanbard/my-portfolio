@@ -124,7 +124,7 @@ export default function BlogPost() {
 
   return (
     <article className="page blog-post">
-      <div className="page-shell content-narrow">
+      <div className="page-shell">
         <Link to="/blog" className="back-link">
           <FiArrowLeft size={16} />
           Back

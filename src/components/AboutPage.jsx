@@ -51,7 +51,7 @@ export default function AboutPage() {
                   <p>{item.organization}</p>
                 </div>
                 <p className="about-experience-period">
-                  {item.period} · {item.location}
+                  {item.period} {'·'} {item.location}
                 </p>
                 <p>{item.description}</p>
               </article>

@@ -3,20 +3,19 @@
 }
 
 .projects-page-list {
-  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
 }
 
 .projects-page-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.75rem 1.5rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--line);
+  gap: 0.45rem 1.5rem;
 }
 
 .projects-page-main h2 {
   font-size: 0.98rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.18rem;
 }
 
 .projects-page-main p {
@@ -42,12 +41,18 @@
 }
 
 .projects-page-tags {
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
+}
+
+.projects-page-links a:hover,
+.projects-page-links a:focus-visible {
+  color: var(--text);
 }
 
 @media (max-width: 640px) {
   .projects-page-item {
     grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 
   .projects-page-meta {
