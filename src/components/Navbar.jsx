@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { motion as Motion } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
-import ThemeToggle from './ThemeToggle';
 import '../styles/Navbar.css';
 
 const navLinks = [
-  { name: 'Home', href: '/#hero' },
-  { name: 'Tech', href: '/#tech' },
-  { name: 'Experience', href: '/#experience' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Blog', href: '/#blog' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Home', to: '/' },
+  { name: 'Writing', to: '/blog' },
+  { name: 'Projects', to: '/projects' },
+  { name: 'About', to: '/about' },
 ];
 
 export default function Navbar() {
@@ -21,76 +18,88 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 24);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
   return (
-    <motion.nav 
+    <Motion.nav
       className={`navbar ${isScrolled ? 'scrolled' : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.45, ease: 'easeOut' }}
     >
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <span className="logo-text">ivan</span>
-          <span className="logo-accent">bard</span>
+          <span className="logo-text">Ivan Bardziyan</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <ul className="nav-links">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a href={link.href} className="nav-link">
+              <NavLink
+                to={link.to}
+                end={link.to === '/'}
+                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              >
                 {link.name}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
 
         <div className="navbar-actions">
-          <ThemeToggle />
-          
-          {/* Mobile menu button */}
-          <button 
+          <a href="/resume.pdf" className="resume-link" target="_blank" rel="noreferrer">
+            Resume
+          </a>
+
+          <button
             className="mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            {isMobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <motion.div 
+        <Motion.div
           className="mobile-menu"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
         >
           {navLinks.map((link) => (
-            <a 
+            <NavLink
               key={link.name}
-              href={link.href} 
+              to={link.to}
+              end={link.to === '/'}
               className="mobile-nav-link"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </NavLink>
           ))}
-        </motion.div>
+          <a
+            href="/resume.pdf"
+            className="mobile-nav-link mobile-resume-link"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Resume
+          </a>
+        </Motion.div>
       )}
-    </motion.nav>
+    </Motion.nav>
   );
 }

@@ -1,0 +1,58 @@
+.home-page {
+  padding: 6.5rem 0 0;
+}
+
+.home-hero {
+  padding-bottom: 4.5rem;
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.9fr);
+  gap: 3rem;
+  align-items: end;
+}
+
+.home-intro h1 {
+  max-width: 13ch;
+}
+
+.home-intro-copy {
+  max-width: 42rem;
+  margin-top: 1.5rem;
+  font-size: 1.14rem;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.home-aside {
+  display: grid;
+  gap: 1.1rem;
+  align-self: start;
+  padding-top: 1rem;
+}
+
+.home-note {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.home-note p {
+  max-width: 26rem;
+}
+
+.home-section {
+  padding: 4rem 0;
+}
+
+@media (max-width: 860px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

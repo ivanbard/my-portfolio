@@ -1,69 +1,67 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { FiArrowLeft, FiCalendar, FiClock, FiArrowRight } from 'react-icons/fi';
 import blogPosts from '../data/blogPosts';
 import '../styles/BlogPage.css';
 
 export default function BlogPage() {
   return (
-    <section className="blog-page">
-      <div className="container">
-        <motion.div
+    <section className="page blog-page">
+      <div className="page-shell">
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
         >
           <Link to="/" className="back-link">
             <FiArrowLeft size={18} />
             Back to Home
           </Link>
-          
-          <div className="page-header">
-            <h1>Blog</h1>
-            <p className="page-subtitle">Thoughts, tutorials, and insights from my journey in tech</p>
-          </div>
-        </motion.div>
 
-        <motion.div 
-          className="blog-page-grid"
+          <div className="page-header">
+            <h1>Writing</h1>
+            <p className="page-intro">
+              Notes on embedded systems, machine learning, internships, and whatever else seems worth writing down clearly.
+            </p>
+          </div>
+        </Motion.div>
+
+        <Motion.div
+          className="blog-page-list"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          transition={{ duration: 0.45, delay: 0.08 }}
         >
           {blogPosts.map((post) => (
-            <Link 
-              key={post.id} 
-              to={`/blog/${post.id}`}
-              className="blog-page-card"
-            >
-              <div className="blog-page-card-content">
-                <div className="blog-page-card-meta">
-                  <span className="blog-date">
-                    <FiCalendar size={14} />
-                    {post.date}
-                  </span>
-                  <span className="blog-read-time">
-                    <FiClock size={14} />
-                    {post.readTime}
-                  </span>
-                </div>
-                
-                <h2 className="blog-page-card-title">{post.title}</h2>
-                <p className="blog-page-card-excerpt">{post.excerpt}</p>
-                
-                <div className="blog-page-card-tags">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="blog-page-tag">{tag}</span>
-                  ))}
-                </div>
-                
-                <span className="blog-page-card-link">
-                  Read more <FiArrowRight size={14} />
+            <Link key={post.id} to={`/blog/${post.id}`} className="blog-page-item">
+              <div className="blog-page-item-meta">
+                <span className="blog-date">
+                  <FiCalendar size={14} />
+                  {post.date}
+                </span>
+                <span className="blog-read-time">
+                  <FiClock size={14} />
+                  {post.readTime}
                 </span>
               </div>
+
+              <div className="blog-page-item-main">
+                <h2>{post.title}</h2>
+                <p>{post.excerpt}</p>
+              </div>
+
+              <div className="blog-page-item-tags">
+                {post.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+
+              <span className="blog-page-item-arrow">
+                Read post <FiArrowRight size={14} />
+              </span>
             </Link>
           ))}
-        </motion.div>
+        </Motion.div>
       </div>
     </section>
   );

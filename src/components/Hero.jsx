@@ -4,7 +4,7 @@ import '../styles/Hero.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Hero() {
@@ -24,7 +24,7 @@ export default function Hero() {
     if (mapRef.current) {
       try {
         mapRef.current.remove();
-      } catch (e) {
+      } catch {
         // Map already removed, ignore
       }
       mapRef.current = null;
@@ -53,15 +53,15 @@ export default function Hero() {
       });
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
-    } catch (e) {
-      console.error('Error initializing map:', e);
+    } catch (error) {
+      console.error('Error initializing map:', error);
     }
     
     return () => {
       if (mapRef.current) {
         try {
           mapRef.current.remove();
-        } catch (e) {
+        } catch {
           // Ignore cleanup errors
         }
         mapRef.current = null;
@@ -89,14 +89,14 @@ export default function Hero() {
   return (
     <section id="hero" className="hero">
       <div className="hero-container">
-        <motion.div 
+        <Motion.div 
           className="hero-bento-grid"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Main intro card */}
-          <motion.div className="bento-card bento-main" variants={itemVariants}>
+          <Motion.div className="bento-card bento-main" variants={itemVariants}>
             <div className="hero-intro">
               <span className="hero-greeting">Hey, I'm</span>
               <h1 className="hero-name">
@@ -117,28 +117,28 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* Map card */}
-          <motion.div className="bento-card bento-map" variants={itemVariants}>
+          <Motion.div className="bento-card bento-map" variants={itemVariants}>
             <div className="map-container" ref={mapContainerRef} />
             <div className="location-badge">
               <FiMapPin />
               <span>Toronto, ON</span>
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* Status card */}
-          <motion.div className="bento-card bento-status" variants={itemVariants}>
+          <Motion.div className="bento-card bento-status" variants={itemVariants}>
             <div className="status-indicator">
               <span className="status-dot"></span>
               <span>Open to opportunities</span>
             </div>
             <p className="status-text">Currently studying at Queen's University</p>
-          </motion.div>
+          </Motion.div>
 
           {/* Social links card */}
-          <motion.div className="bento-card bento-social" variants={itemVariants}>
+          <Motion.div className="bento-card bento-social" variants={itemVariants}>
             <h3 className="bento-card-title">Connect</h3>
             <div className="social-links">
               <a href="https://github.com/ivanbard" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -150,10 +150,10 @@ export default function Hero() {
                 <span>LinkedIn</span>
               </a>
             </div>
-          </motion.div>
+          </Motion.div>
 
           {/* Interests card */}
-          <motion.div className="bento-card bento-interests" variants={itemVariants}>
+          <Motion.div className="bento-card bento-interests" variants={itemVariants}>
             <h3 className="bento-card-title">Interests</h3>
             <div className="interest-tags">
               <span className="tag">Data Science</span>
@@ -161,8 +161,8 @@ export default function Hero() {
               <span className="tag">Web Dev</span>
               <span className="tag">Machine Learning</span>
             </div>
-          </motion.div>
-        </motion.div>
+          </Motion.div>
+        </Motion.div>
       </div>
     </section>
   );
