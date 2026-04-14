@@ -13,7 +13,6 @@ export default function AboutPage() {
         </Link>
 
         <div className="page-header">
-          <p className="eyebrow">About</p>
           <h1>About</h1>
           <p className="page-intro">
             I&apos;m a computer engineering student based between Toronto and Kingston, interested in software,

@@ -13,7 +13,6 @@ export default function BlogPage() {
         </Link>
 
         <div className="page-header">
-          <p className="eyebrow">Writing</p>
           <h1>Writing</h1>
           <p className="page-intro">
             Notes on embedded systems, machine learning, internships, and whatever else seems worth writing down clearly.

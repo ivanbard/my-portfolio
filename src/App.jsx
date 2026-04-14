@@ -6,7 +6,6 @@ import ProjectsPage from './components/ProjectsPage';
 import BlogPage from './components/BlogPage';
 import BlogPost from './components/BlogPost';
 import AboutPage from './components/AboutPage';
-import SiteFooter from './components/SiteFooter';
 import './styles/globals.css';
 import './App.css';
 
@@ -35,7 +34,6 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
           </Routes>
         </main>
-        <SiteFooter />
       </div>
     </Router>
   );

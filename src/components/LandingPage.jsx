@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom';
+import sections from '../data/sections';
 import '../styles/Home.css';
+
+const sectionCopy = {
+  writing: 'Notes on systems and machine learning.',
+  projects: 'Software projects and experiments.',
+  about: 'Background and current work.',
+};
 
 export default function LandingPage() {
   return (
@@ -15,20 +22,26 @@ export default function LandingPage() {
         </p>
 
         <div className="home-links" aria-label="Site index">
-          <Link to="/blog" className="home-link">
-            <span className="home-link-title">Writing</span>
-            <span className="home-link-copy">Notes on systems and machine learning.</span>
-          </Link>
+          {sections.map((section) => {
+            const Icon = section.icon;
 
-          <Link to="/projects" className="home-link">
-            <span className="home-link-title">Projects</span>
-            <span className="home-link-copy">Software projects and experiments.</span>
-          </Link>
-
-          <Link to="/about" className="home-link">
-            <span className="home-link-title">About</span>
-            <span className="home-link-copy">Background and current work.</span>
-          </Link>
+            return (
+              <Link
+                key={section.key}
+                to={section.to}
+                className="home-link"
+                style={{ '--section-accent': section.color }}
+              >
+                <span className="home-link-text">
+                  <span className="home-link-title">{section.name}</span>
+                  <span className="home-link-copy">{sectionCopy[section.key]}</span>
+                </span>
+                <span className="home-link-icon" aria-hidden="true">
+                  <Icon size={16} />
+                </span>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="home-socials" aria-label="Contact and social links">

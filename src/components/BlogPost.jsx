@@ -131,7 +131,6 @@ export default function BlogPost() {
         </Link>
 
         <header className="blog-post-header">
-          <p className="eyebrow">Writing</p>
           <div className="blog-post-meta">
             <span>
               <FiCalendar size={14} />

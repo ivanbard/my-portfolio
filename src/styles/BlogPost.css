@@ -1,18 +1,23 @@
 .blog-post {
-  padding: 4rem 0 4rem;
+  padding: 2.5rem 0 2rem;
 }
 
 .blog-post-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
+}
+
+.blog-post-header h1 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.08;
 }
 
 .blog-post-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem 1rem;
-  margin-bottom: 0.8rem;
+  gap: 0.65rem 0.9rem;
+  margin-bottom: 0.6rem;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
 }
 
 .blog-post-meta span {
@@ -26,27 +31,27 @@
 }
 
 .blog-post-content h2 {
-  margin: 2rem 0 0.8rem;
-  font-size: 1.3rem;
+  margin: 1.5rem 0 0.6rem;
+  font-size: 1.05rem;
 }
 
 .blog-post-content h3 {
-  margin: 1.5rem 0 0.7rem;
-  font-size: 1.08rem;
+  margin: 1.2rem 0 0.55rem;
+  font-size: 0.98rem;
 }
 
 .blog-post-content p,
 .blog-post-content li {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .blog-post-content p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .blog-post-content ul,
 .blog-post-content ol {
-  margin: 0 0 1rem 1.25rem;
+  margin: 0 0 0.85rem 1.15rem;
 }
 
 .blog-post-content strong {
@@ -59,13 +64,13 @@
 }
 
 .blog-post-content pre {
-  margin: 1.25rem 0;
-  padding: 0.9rem 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem 0.85rem;
   border: 1px solid var(--line);
   overflow-x: auto;
 }
 
 .blog-post-content code {
   font-family: var(--font-mono);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }

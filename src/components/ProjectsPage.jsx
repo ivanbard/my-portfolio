@@ -13,7 +13,6 @@ export default function ProjectsPage() {
         </Link>
 
         <div className="page-header">
-          <p className="eyebrow">Projects</p>
           <h1>Projects</h1>
           <p className="page-intro">A simple index of software projects, experiments, and side work.</p>
         </div>

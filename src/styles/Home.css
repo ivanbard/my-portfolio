@@ -26,10 +26,17 @@
 }
 
 .home-link {
-  display: grid;
-  gap: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--line);
+}
+
+.home-link-text {
+  display: grid;
+  gap: 0.2rem;
 }
 
 .home-link-title {
@@ -41,6 +48,36 @@
 .home-link-copy {
   font-size: 0.88rem;
   color: var(--muted);
+}
+
+.home-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--section-accent) 14%, transparent);
+  color: var(--section-accent);
+  opacity: 0;
+  transform: translateY(2px) scale(0.92);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.home-link:hover .home-link-title {
+  color: var(--section-accent);
+}
+
+.home-link:hover .home-link-icon {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (hover: none) {
+  .home-link-icon {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .home-socials {
