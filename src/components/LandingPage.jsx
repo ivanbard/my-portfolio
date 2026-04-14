@@ -5,7 +5,6 @@ export default function LandingPage() {
   return (
     <section className="page home-page">
       <div className="page-shell home-index">
-        <p className="home-name">Ivan Bardziyan</p>
         <h1>
           Computer engineering student building software and writing about systems,
           machine learning, and product work.
@@ -18,17 +17,17 @@ export default function LandingPage() {
         <div className="home-links" aria-label="Site index">
           <Link to="/blog" className="home-link">
             <span className="home-link-title">Writing</span>
-            <span className="home-link-copy">Notes on embedded systems, machine learning, and internships.</span>
+            <span className="home-link-copy">Notes on systems and machine learning.</span>
           </Link>
 
           <Link to="/projects" className="home-link">
             <span className="home-link-title">Projects</span>
-            <span className="home-link-copy">Software projects, experiments, and things I&apos;ve built.</span>
+            <span className="home-link-copy">Software projects and experiments.</span>
           </Link>
 
           <Link to="/about" className="home-link">
             <span className="home-link-title">About</span>
-            <span className="home-link-copy">Background, current work, and what I want to keep doing.</span>
+            <span className="home-link-copy">Background and current work.</span>
           </Link>
         </div>
 

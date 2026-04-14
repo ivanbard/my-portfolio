@@ -10,8 +10,8 @@
   --muted: #666257;
   --line: #d9d4c8;
   --line-strong: #c8c1b2;
-  --content-max: 760px;
-  --narrow-max: 680px;
+  --content-max: 620px;
+  --narrow-max: 560px;
   --font-sans: 'Manrope', 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
   color-scheme: light;

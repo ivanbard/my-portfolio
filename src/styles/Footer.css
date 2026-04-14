@@ -1,19 +1,11 @@
 .site-footer {
   border-top: 1px solid var(--line);
-  padding: 1rem 0 2rem;
+  padding: 0.85rem 0 1.5rem;
 }
 
 .site-footer-inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.site-footer-copy,
-.site-footer-links a {
-  font-size: 0.92rem;
-  color: var(--muted);
+  justify-content: flex-end;
 }
 
 .site-footer-links {
@@ -22,9 +14,13 @@
   gap: 1rem;
 }
 
+.site-footer-links a {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
 @media (max-width: 720px) {
   .site-footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-start;
   }
 }
