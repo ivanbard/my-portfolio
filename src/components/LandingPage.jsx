@@ -56,9 +56,6 @@ export default function LandingPage() {
           <a href="https://linkedin.com/in/ivanbardziyan" target="_blank" rel="noreferrer" className="home-social-link">
             LinkedIn
           </a>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="home-social-link">
-            Resume
-          </a>
         </div>
       </div>
     </section>

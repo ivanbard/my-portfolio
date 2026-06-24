@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FiMapPin, FiArrowRight } from 'react-icons/fi';
 import '../styles/Hero.css';
 import maplibregl from 'maplibre-gl';
@@ -110,10 +110,6 @@ export default function Hero() {
                 <a href="#projects" className="btn btn-primary">
                   View Projects
                   <FiArrowRight />
-                </a>
-                <a href="/resume.pdf" className="btn btn-secondary">
-                  <FaFileAlt />
-                  Resume
                 </a>
               </div>
             </div>
