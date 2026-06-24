@@ -1,13 +1,23 @@
 const experiences = [
   {
     type: 'work',
-    title: 'Data Science Intern',
-    organization: 'M2M Technologies',
+    title: 'Data Engineer (Amplify)',
+    organization: 'Royal Bank of Canada',
     location: 'Toronto, ON',
-    period: 'Mar 2025 - Present',
+    period: 'May 2026 - Present',
     description:
-      'Built recommendation, prediction, and LLM-backed product features using Python, scikit-learn, GCP, AWS, and cross-functional product iteration.',
+      'Architected blockchain-based institutional FX platform work spanning technical PoC, real-time data pipelines, optimization logic, on-chain settlement, and a full-stack trading UI.',
     current: true,
+  },
+  {
+    type: 'work',
+    title: 'Data Science Intern',
+    organization: 'M2M Tech Bytes',
+    location: 'Vancouver, BC (Remote)',
+    period: 'Mar 2025 - Apr 2026',
+    description:
+      'Built Firecrawl and OpenAI extraction pipelines, XGBoost placement models, and a GCP recommendation engine to improve research speed, operational efficiency, and end-user matching.',
+    current: false,
   },
   {
     type: 'work',
@@ -16,7 +26,7 @@ const experiences = [
     location: 'Toronto, ON',
     period: 'May 2025 - Aug 2025',
     description:
-      'Created reporting dashboards and simulation tooling to help hospital staff monitor workload, onboarding, and operational planning.',
+      'Built Power BI and SQL reporting pipelines for operational KPIs, analyzed staff feedback with NLP topic modeling, and presented recommendations for technology and equipment improvements.',
     current: false,
   },
   {
@@ -24,9 +34,9 @@ const experiences = [
     title: 'Computer Engineering',
     organization: "Queen's University",
     location: 'Kingston, ON',
-    period: '2023 - Present',
+    period: '2023 - Expected May 2027',
     description:
-      'Studying software, systems, and hardware fundamentals with growing interest in embedded systems and applied machine learning.',
+      "Bachelor's of Computer Engineering with Dean Scholar's Distinction, focused on operating systems, embedded systems, computer architecture, data structures, and applied data science.",
     current: true,
   },
 ];

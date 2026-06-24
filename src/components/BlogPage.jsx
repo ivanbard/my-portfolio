@@ -15,7 +15,7 @@ export default function BlogPage() {
         <div className="page-header">
           <h1>Writing</h1>
           <p className="page-intro">
-            Notes on embedded systems, machine learning, internships, and whatever else seems worth writing down clearly.
+            Notes on embedded systems, machine learning, data work, and whatever else seems worth writing down clearly.
           </p>
         </div>
 

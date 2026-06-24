@@ -103,8 +103,8 @@ export default function Hero() {
                 <span className="gradient-text">Ivan Bardziyan</span>
               </h1>
               <p className="hero-tagline">
-                Computer Engineering Student passionate about building 
-                beautiful, functional digital experiences.
+                Computer engineering student and data engineer building
+                useful systems, data products, and digital experiences.
               </p>
               <div className="hero-cta">
                 <a href="#projects" className="btn btn-primary">
@@ -132,9 +132,9 @@ export default function Hero() {
           <Motion.div className="bento-card bento-status" variants={itemVariants}>
             <div className="status-indicator">
               <span className="status-dot"></span>
-              <span>Open to opportunities</span>
+              <span>Building at RBC Amplify</span>
             </div>
-            <p className="status-text">Currently studying at Queen's University</p>
+            <p className="status-text">Studying Computer Engineering at Queen's University</p>
           </Motion.div>
 
           {/* Social links card */}
@@ -156,9 +156,9 @@ export default function Hero() {
           <Motion.div className="bento-card bento-interests" variants={itemVariants}>
             <h3 className="bento-card-title">Interests</h3>
             <div className="interest-tags">
-              <span className="tag">Data Science</span>
-              <span className="tag">UI/UX Design</span>
-              <span className="tag">Web Dev</span>
+              <span className="tag">Data Engineering</span>
+              <span className="tag">Systems</span>
+              <span className="tag">DeFi</span>
               <span className="tag">Machine Learning</span>
             </div>
           </Motion.div>

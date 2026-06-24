@@ -12,5 +12,4 @@
 
 .route-transition {
   min-height: inherit;
-  will-change: opacity, transform;
 }

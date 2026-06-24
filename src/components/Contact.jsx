@@ -38,7 +38,7 @@ export default function Contact() {
             <p className="section-kicker">Contact</p>
             <h2>If something here feels relevant, send me a note.</h2>
             <p className="section-description">
-              I&apos;m most interested in thoughtful software work, internship opportunities, and teams that care about both technical depth and the final experience.
+              I&apos;m most interested in thoughtful software and data work with teams that care about both technical depth and the final experience.
             </p>
           </div>
 

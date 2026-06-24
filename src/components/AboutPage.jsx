@@ -15,20 +15,22 @@ export default function AboutPage() {
         <div className="page-header">
           <h1>About</h1>
           <p className="page-intro">
-            I&apos;m a computer engineering student based between Toronto and Kingston, interested in software,
-            systems, and machine learning work that feels clear and useful.
+            I&apos;m a computer engineering student and data engineer based between Toronto and Kingston,
+            interested in software, systems, and machine learning work that feels clear and useful.
           </p>
         </div>
 
         <div className="about-copy">
           <p>
-            My recent work has mostly lived between data-heavy product work and the broader systems side
-            of computing. I like projects where there is a practical user need underneath the technical work.
+            My recent work has mostly lived between data-heavy product work, financial systems,
+            and the broader systems side of computing. I like projects where there is a practical
+            user need underneath the technical work.
           </p>
           <p>
-            A lot of that has come through internships: recommendation systems, predictive models,
-            dashboards, and internal tools. At school, I keep getting pulled toward embedded systems and
-            the points where hardware and software meet.
+            That has come through roles across banking, startup, and hospital environments:
+            blockchain-based FX platform work, recommendation systems, predictive models,
+            dashboards, and internal tools. At school, I keep getting pulled toward embedded
+            systems and the points where hardware and software meet.
           </p>
           <p>
             I write because it helps me think more clearly. Most of the writing on this site is meant to be
@@ -51,7 +53,7 @@ export default function AboutPage() {
                   <p>{item.organization}</p>
                 </div>
                 <p className="about-experience-period">
-                  {item.period} {'·'} {item.location}
+                  {item.period} | {item.location}
                 </p>
                 <p>{item.description}</p>
               </article>

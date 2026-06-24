@@ -13,12 +13,12 @@ export default function LandingPage() {
     <section className="page home-page">
       <div className="page-shell home-index">
         <p className="home-intro-line">
-          Computer engineering student building software and writing about systems,
+          Computer engineering student and data engineer building software and writing about systems,
           machine learning, and product work.
         </p>
         <p className="home-intro-line">
-          Based in Toronto and Kingston. Currently working as a Data Science Intern at
-          M2M Technologies and studying at Queen&apos;s University.
+          Based in Toronto and Kingston. Currently working as a Data Engineer at
+          Royal Bank of Canada and studying at Queen&apos;s University.
         </p>
 
         <GitHubChart />
