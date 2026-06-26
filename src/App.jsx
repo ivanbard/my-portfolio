@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion as Motion, useReducedMotion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ProjectsPage from './components/ProjectsPage';
 import BlogPage from './components/BlogPage';
-import BlogPost from './components/BlogPost';
 import AboutPage from './components/AboutPage';
 import './styles/globals.css';
 import './App.css';
+
+const BlogPost = lazy(() => import('./components/BlogPost'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -55,7 +56,20 @@ function AnimatedRoutes() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route
+            path="/blog/:slug"
+            element={
+              <Suspense
+                fallback={
+                  <section className="page route-loading">
+                    <div className="page-shell">Loading...</div>
+                  </section>
+                }
+              >
+                <BlogPost />
+              </Suspense>
+            }
+          />
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </Motion.div>

@@ -21,7 +21,11 @@ XGBoost (Extreme Gradient Boosting) is one of the most powerful and popular mach
 
 Here's a simple example to get you started:
 
-```python
+:::tip[Readable examples matter]
+The model code is small, but giving the snippet a filename and highlighting the training block makes it much easier to scan when you come back to the post later.
+:::
+
+```python [xgboost-baseline.py] {7-12} focus=7-12 line-numbers
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 

@@ -13,3 +13,9 @@
 .route-transition {
   min-height: inherit;
 }
+
+.route-loading {
+  padding: 2.5rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
