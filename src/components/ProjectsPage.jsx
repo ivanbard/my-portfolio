@@ -14,7 +14,7 @@ export default function ProjectsPage() {
 
         <div className="page-header">
           <h1>Projects</h1>
-          <p className="page-intro">A simple index of software projects, experiments, and side work.</p>
+          <p className="page-intro">Selected software, systems, and product work.</p>
         </div>
 
         <div className="projects-page-list">
@@ -28,9 +28,9 @@ export default function ProjectsPage() {
               <div className="projects-page-meta">
                 <div className="projects-page-links">
                   <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    Visit
+                    {project.linkLabel ?? 'Visit'}
                   </a>
-                  {project.github && (
+                  {project.github && project.github !== project.link && (
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       Code
                     </a>
