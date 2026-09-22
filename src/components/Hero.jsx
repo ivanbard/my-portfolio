@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { FiMapPin, FiArrowRight } from 'react-icons/fi';
 import '../styles/Hero.css';
 import maplibregl from 'maplibre-gl';
@@ -144,6 +144,10 @@ export default function Hero() {
               <a href="https://linkedin.com/in/ivanbardziyan" target="_blank" rel="noopener noreferrer" className="social-link">
                 <FaLinkedin size={22} />
                 <span>LinkedIn</span>
+              </a>
+              <a href="https://x.com/ivanbardziyan" target="_blank" rel="noopener noreferrer" className="social-link">
+                <FaXTwitter size={22} />
+                <span>X</span>
               </a>
             </div>
           </Motion.div>

@@ -56,6 +56,9 @@ export default function LandingPage() {
           <a href="https://linkedin.com/in/ivanbardziyan" target="_blank" rel="noreferrer" className="home-social-link">
             LinkedIn
           </a>
+          <a href="https://x.com/ivanbardziyan" target="_blank" rel="noreferrer" className="home-social-link">
+            X
+          </a>
         </div>
       </div>
     </section>

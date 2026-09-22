@@ -39,7 +39,8 @@ export default function AboutPage() {
           <p>
             You can reach me at <a href="mailto:ivanbardziyan@gmail.com">ivanbardziyan@gmail.com</a> or find me on{' '}
             <a href="https://github.com/ivanbard" target="_blank" rel="noreferrer">GitHub</a> and{' '}
-            <a href="https://linkedin.com/in/ivanbardziyan" target="_blank" rel="noreferrer">LinkedIn</a>.
+            <a href="https://linkedin.com/in/ivanbardziyan" target="_blank" rel="noreferrer">LinkedIn</a>, or{' '}
+            <a href="https://x.com/ivanbardziyan" target="_blank" rel="noreferrer">X</a>.
           </p>
         </div>
 

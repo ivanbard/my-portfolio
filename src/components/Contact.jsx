@@ -21,6 +21,12 @@ const contactLinks = [
     href: 'https://linkedin.com/in/ivanbardziyan',
     description: 'Professional background and current work.',
   },
+  {
+    name: 'X',
+    value: '@ivanbardziyan',
+    href: 'https://x.com/ivanbardziyan',
+    description: 'Short thoughts and updates.',
+  },
 ];
 
 export default function Contact() {
