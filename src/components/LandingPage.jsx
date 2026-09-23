@@ -5,6 +5,11 @@ import experiences from '../data/experience';
 import locations from '../data/locations';
 import '../styles/Home.css';
 
+function photoIsReady(cache, src) {
+  const image = cache.get(src);
+  return image?.complete && image.naturalWidth > 0;
+}
+
 export default function LandingPage() {
   const [activeLocation, setActiveLocation] = useState(null);
   const [imageIndex, setImageIndex] = useState(0);
@@ -14,13 +19,21 @@ export default function LandingPage() {
   const [isPreviewClosing, setIsPreviewClosing] = useState(false);
   const introRef = useRef(null);
   const closeTimerRef = useRef(null);
+  const preloadedPhotosRef = useRef(new Map());
 
   const showLocation = (location) => {
+    for (const { src } of locations[location].photos) {
+      if (preloadedPhotosRef.current.has(src)) continue;
+      const image = new Image();
+      preloadedPhotosRef.current.set(src, image);
+      image.onerror = () => preloadedPhotosRef.current.delete(src);
+      image.src = src;
+    }
     window.clearTimeout(closeTimerRef.current);
     setIsPreviewClosing(false);
     if (location !== activeLocation) {
       setImageIndex(0);
-      setImageLoaded(false);
+      setImageLoaded(photoIsReady(preloadedPhotosRef.current, locations[location].photos[0].src));
       setIsPreviewHovered(false);
       setIsPreviewFocused(false);
     }
@@ -41,16 +54,18 @@ export default function LandingPage() {
   };
 
   const advanceImage = (location) => {
-    setImageLoaded(false);
-    setImageIndex((index) => (index + 1) % locations[location].photos.length);
+    const nextIndex = (imageIndex + 1) % locations[location].photos.length;
+    setImageLoaded(photoIsReady(preloadedPhotosRef.current, locations[location].photos[nextIndex].src));
+    setImageIndex(nextIndex);
   };
 
   useEffect(() => {
     if (!activeLocation || isPreviewHovered || isPreviewFocused || isPreviewClosing) return undefined;
 
     const timer = window.setTimeout(() => {
-      setImageLoaded(false);
-      setImageIndex((index) => (index + 1) % locations[activeLocation].photos.length);
+      const nextIndex = (imageIndex + 1) % locations[activeLocation].photos.length;
+      setImageLoaded(photoIsReady(preloadedPhotosRef.current, locations[activeLocation].photos[nextIndex].src));
+      setImageIndex(nextIndex);
     }, 7000);
     return () => window.clearTimeout(timer);
   }, [activeLocation, imageIndex, isPreviewHovered, isPreviewFocused, isPreviewClosing]);
@@ -138,10 +153,7 @@ export default function LandingPage() {
           Additionally, I spent some time at <a href="https://www.tehn.ca/">Michael Garron Hospital</a> working with data.
         </p>
         <p className="home-intro-line">
-          I like working and learning about low-level systems, and sometimes I <Link to="/blog">write</Link>.
-        </p>
-        <p className="home-intro-line">
-          Some of my recent <Link to="/projects">projects</Link> are here.
+          I like learning about low-level systems, creating <Link to="/projects">projects</Link>, and occasionally <Link to="/blog">writing</Link>.
         </p>
 
         <GitHubChart />

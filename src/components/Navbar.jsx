@@ -90,7 +90,7 @@ export default function Navbar() {
                       {content}
                     </button>
                   ) : (
-                    <NavLink key={section.key} to={section.to} className="nav-selector-item" style={{ '--section-accent': section.color }}>
+                    <NavLink key={section.key} to={section.to} className="nav-selector-item" style={{ '--section-accent': section.color }} onClick={() => setIsSelectorOpen(false)}>
                       {content}
                     </NavLink>
                   );

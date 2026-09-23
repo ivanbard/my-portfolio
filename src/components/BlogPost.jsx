@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { FiAlertTriangle, FiArrowLeft, FiCalendar, FiCheck, FiClock, FiCopy, FiInfo } from 'react-icons/fi';
 import ReactMarkdown from 'react-markdown';
@@ -8,6 +8,7 @@ import remarkDirective from 'remark-directive';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
 import blogPosts from '../data/blogPosts';
+import { countBlogView } from '../lib/blogViews';
 import '../styles/BlogPost.css';
 
 const calloutTypes = {
@@ -290,6 +291,22 @@ function Callout({ node, children, ...props }) {
 export default function BlogPost() {
   const { slug } = useParams();
   const post = blogPosts.find((entry) => entry.id === slug);
+  const [views, setViews] = useState(null);
+  const request = useRef(null);
+
+  useEffect(() => {
+    if (!post) return undefined;
+
+    if (request.current?.slug !== slug) {
+      request.current = { slug, promise: countBlogView(slug) };
+    }
+
+    let active = true;
+    request.current.promise.then((count) => {
+      if (active) setViews({ slug, count });
+    }).catch(() => {});
+    return () => { active = false; };
+  }, [post, slug]);
 
   if (!post) {
     return <Navigate to="/blog" replace />;
@@ -333,6 +350,9 @@ export default function BlogPost() {
             {post.content}
           </ReactMarkdown>
         </div>
+        {views?.slug === slug && (
+          <footer className="blog-post-views">{views.count.toLocaleString()} {views.count === 1 ? 'view' : 'views'}</footer>
+        )}
       </div>
     </article>
   );
