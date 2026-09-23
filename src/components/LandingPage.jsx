@@ -15,14 +15,14 @@ export default function LandingPage() {
         <p className="home-intro-line">
           I was born in Minsk, and now live in Toronto.
           <br />
-          I currently study computer engineering at Queen's University out in Kingston.
+          I currently study computer engineering at <a href="https://www.queensu.ca/">Queen's University</a> out in Kingston.
         </p>
         <p className="home-intro-line">
-          Previously, I was a data engineer at RBC, in the Amplify program. Prior to that, I was at Mind 2 Machine researching, building, and implementing models for clients. 
-          Additionally, I spent some time at Michael Garron Hospital working with data.
+          Previously, I was a data engineer at <a href="https://www.rbcroyalbank.com/personal.html">RBC</a>, in the <a href="https://jobs.rbc.com/ca/en/amplify">Amplify program</a>. Prior to that, I was at <a href="https://m2mtechconnect.com/">Mind 2 Machine</a> researching, building, and implementing models for clients.
+          Additionally, I spent some time at <a href="https://www.tehn.ca/">Michael Garron Hospital</a> working with data.
         </p>
         <p className="home-intro-line">
-          I like working and learning about low-level systems, and sometimes I write.
+          I like working and learning about low-level systems, and sometimes I <Link to="/blog">write</Link>.
         </p>
 
         <GitHubChart />

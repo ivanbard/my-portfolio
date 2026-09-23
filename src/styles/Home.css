@@ -13,6 +13,19 @@
   line-height: 1.6;
 }
 
+.home-intro-line a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 0.14em;
+  transition: text-decoration-color 0.16s ease;
+}
+
+.home-intro-line a:hover,
+.home-intro-line a:focus-visible {
+  text-decoration-color: var(--text);
+}
+
 .home-links {
   display: grid;
   margin-top: 0.75rem;

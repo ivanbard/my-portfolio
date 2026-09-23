@@ -13,8 +13,16 @@
 }
 
 .about-copy a {
+  color: inherit;
   text-decoration: underline;
+  text-decoration-color: var(--line-strong);
   text-underline-offset: 0.14em;
+  transition: text-decoration-color 0.16s ease;
+}
+
+.about-copy a:hover,
+.about-copy a:focus-visible {
+  text-decoration-color: var(--text);
 }
 
 .about-section {

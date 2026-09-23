@@ -103,8 +103,8 @@ export default function Hero() {
                 <span className="gradient-text">Ivan Bardziyan</span>
               </h1>
               <p className="hero-tagline">
-                I was born in Minsk, and now live in Toronto.
-                I currently study computer engineering at Queen's University out in Kingston.
+                Computer engineering student and data engineer building
+                useful systems, data products, and digital experiences.
               </p>
               <div className="hero-cta">
                 <a href="#projects" className="btn btn-primary">
