@@ -4,18 +4,21 @@ import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ProjectsPage from './components/ProjectsPage';
 import BlogPage from './components/BlogPage';
-import AboutPage from './components/AboutPage';
 import './styles/globals.css';
 import './App.css';
 
 const BlogPost = lazy(() => import('./components/BlogPost'));
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [pathname]);
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView();
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }, [pathname, hash]);
 
   return null;
 }
@@ -41,7 +44,6 @@ function AppRoutes() {
             </Suspense>
           }
         />
-        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
   );

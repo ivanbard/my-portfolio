@@ -51,8 +51,8 @@ export default function Experience() {
           viewport={{ once: true, margin: '-120px' }}
           transition={{ delay: 0.05, duration: 0.35 }}
         >
-          <Link to="/about" className="text-link">
-            Read the longer background <FiArrowRight size={16} />
+          <Link to="/#experience" className="text-link">
+            View experience <FiArrowRight size={16} />
           </Link>
         </Motion.div>
       </div>

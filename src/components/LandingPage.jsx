@@ -1,15 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import GitHubChart from './GitHubChart';
-import sections from '../data/sections';
+import experiences from '../data/experience';
 import locations from '../data/locations';
 import '../styles/Home.css';
-
-const sectionCopy = {
-  writing: 'Notes on systems and machine learning.',
-  projects: 'Software projects and experiments.',
-  about: 'Background and current work.',
-};
 
 export default function LandingPage() {
   const [activeLocation, setActiveLocation] = useState(null);
@@ -146,31 +140,30 @@ export default function LandingPage() {
         <p className="home-intro-line">
           I like working and learning about low-level systems, and sometimes I <Link to="/blog">write</Link>.
         </p>
+        <p className="home-intro-line">
+          Some of my recent <Link to="/projects">projects</Link> are here.
+        </p>
 
         <GitHubChart />
 
-        <div className="home-links" aria-label="Site index">
-          {sections.filter((section) => section.key !== 'home').map((section) => {
-            const Icon = section.icon;
-
-            return (
-              <Link
-                key={section.key}
-                to={section.to}
-                className="home-link"
-                style={{ '--section-accent': section.color }}
-              >
-                <span className="home-link-text">
-                  <span className="home-link-title">{section.name}</span>
-                  <span className="home-link-copy">{sectionCopy[section.key]}</span>
-                </span>
-                <span className="home-link-icon" aria-hidden="true">
-                  <Icon size={16} />
-                </span>
-              </Link>
-            );
-          })}
-        </div>
+        <section id="experience" className="home-experience" aria-labelledby="home-experience-title">
+          <h2 id="home-experience-title">Experience</h2>
+          <div className="home-experience-list">
+            {experiences.map((item) => (
+              <article key={`${item.organization}-${item.period}`} className="home-experience-item">
+                <div className="home-experience-header">
+                  <h3>{item.title}</h3>
+                  <p>{item.organization}</p>
+                </div>
+                <p className="home-experience-period">
+                  <span>{item.period}</span>
+                  <span>{item.location}</span>
+                </p>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <div className="home-socials" aria-label="Contact and social links">
           <a href="mailto:ivanbardziyan@gmail.com" className="home-social-link">

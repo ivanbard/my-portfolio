@@ -1,4 +1,4 @@
-import { FiBookOpen, FiFolder, FiHome, FiUser } from 'react-icons/fi';
+import { FiBookOpen, FiFolder, FiHome } from 'react-icons/fi';
 
 const sections = [
   {
@@ -6,7 +6,7 @@ const sections = [
     name: 'Home',
     to: '/',
     icon: FiHome,
-    color: '#3b6db3',
+    color: '#4f8a5b',
   },
   {
     key: 'writing',
@@ -21,13 +21,6 @@ const sections = [
     to: '/projects',
     icon: FiFolder,
     color: '#3b6db3',
-  },
-  {
-    key: 'about',
-    name: 'About',
-    to: '/about',
-    icon: FiUser,
-    color: '#4f8a5b',
   },
 ];
 

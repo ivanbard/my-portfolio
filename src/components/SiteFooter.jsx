@@ -8,7 +8,7 @@ export default function SiteFooter() {
         <nav className="site-footer-links" aria-label="Footer">
           <Link to="/blog">Writing</Link>
           <Link to="/projects">Projects</Link>
-          <Link to="/about">About</Link>
+          <Link to="/#experience">Experience</Link>
           <a href="mailto:ivanbardziyan@gmail.com">Email</a>
         </nav>
       </div>
