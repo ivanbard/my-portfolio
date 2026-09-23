@@ -13,12 +13,16 @@ export default function LandingPage() {
     <section className="page home-page">
       <div className="page-shell home-index">
         <p className="home-intro-line">
-          Computer engineering student and data engineer building software and writing about systems,
-          machine learning, and product work.
+          I was born in Minsk, and now live in Toronto.
+          <br />
+          I currently study computer engineering at Queen's University out in Kingston.
         </p>
         <p className="home-intro-line">
-          Based in Toronto and Kingston. Currently working as a Data Engineer at
-          Royal Bank of Canada and studying at Queen&apos;s University.
+          Previously, I was a data engineer at RBC, in the Amplify program. Prior to that, I was at Mind 2 Machine researching, building, and implementing models for clients. 
+          Additionally, I spent some time at Michael Garron Hospital working with data.
+        </p>
+        <p className="home-intro-line">
+          I like working and learning about low-level systems, and sometimes I write.
         </p>
 
         <GitHubChart />
