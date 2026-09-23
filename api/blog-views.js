@@ -1,10 +1,8 @@
 const postIds = [
-  'building-recommendation-engine',
   'disappearance-of-the-ide',
   'embedded-systems-intro',
   'getting-started-with-xgboost',
   'looking-back-on-rbc-amplify',
-  'my-internship-journey',
 ];
 
 async function redis(command) {

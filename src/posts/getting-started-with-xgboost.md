@@ -1,10 +1,12 @@
 ---
 title: Getting Started with XGBoost for Prediction Models
 date: 2025-12-10
-excerpt: A beginner-friendly guide to using XGBoost for building powerful prediction models.
+excerpt: A sample post for testing code snippets on this blog, using XGBoost as an example.
 tags: [Machine Learning, XGBoost, Data Science]
 readTime: 8 min read
 ---
+
+This is primarily a sample article for testing how code snippets work on this blog. The XGBoost example gives me something concrete to try them with.
 
 ## What is XGBoost?
 
