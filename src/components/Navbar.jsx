@@ -64,12 +64,14 @@ export default function Navbar() {
               aria-expanded={isSelectorOpen}
               aria-label="Open section selector"
             >
-              <span
-                className={`nav-selector-icon ${activeSection ? 'active' : ''}`}
-                style={activeSection ? { '--section-accent': activeSection.color } : undefined}
-              >
-                {ActiveIcon ? <ActiveIcon size={14} /> : <FiChevronDown size={14} />}
-              </span>
+              {ActiveIcon && (
+                <span
+                  className="nav-selector-icon active"
+                  style={{ '--section-accent': activeSection.color }}
+                >
+                  <ActiveIcon size={14} />
+                </span>
+              )}
               <span className="nav-selector-label">{activeSection?.name ?? 'Sections'}</span>
               <FiChevronDown className="nav-selector-caret" size={14} />
             </button>
