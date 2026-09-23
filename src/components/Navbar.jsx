@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FiChevronDown } from 'react-icons/fi';
 import sections, { getActiveSection } from '../data/sections';
 import '../styles/Navbar.css';
 
@@ -10,7 +9,7 @@ export default function Navbar() {
   const location = useLocation();
   const selectorRef = useRef(null);
   const activeSection = getActiveSection(location.pathname);
-  const ActiveIcon = activeSection?.icon;
+  const selectedOffset = Math.max(0, sections.indexOf(activeSection)) * 1.75;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +34,9 @@ export default function Navbar() {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setIsSelectorOpen(false);
+        if (selectorRef.current?.contains(document.activeElement)) {
+          selectorRef.current.querySelector('.nav-selector-trigger')?.focus();
+        }
       }
     };
 
@@ -58,41 +60,38 @@ export default function Navbar() {
           <div className="nav-selector" ref={selectorRef}>
             <button
               type="button"
-              className={`nav-selector-trigger ${isSelectorOpen ? 'open' : ''}`}
+              className="nav-selector-trigger"
               onClick={() => setIsSelectorOpen((open) => !open)}
-              aria-haspopup="menu"
               aria-expanded={isSelectorOpen}
-              aria-label="Open section selector"
+              aria-label={`Sections, current: ${activeSection?.name ?? 'Home'}`}
+              title="Sections"
             >
-              {ActiveIcon && (
-                <span
-                  className="nav-selector-icon active"
-                  style={{ '--section-accent': activeSection.color }}
-                >
-                  <ActiveIcon size={14} />
-                </span>
-              )}
-              <span className="nav-selector-label">{activeSection?.name ?? 'Sections'}</span>
-              <FiChevronDown className="nav-selector-caret" size={14} />
+              <span
+                className="nav-selector-trigger-mark"
+                style={activeSection ? { '--section-accent': activeSection.color } : undefined}
+                aria-hidden="true"
+              />
             </button>
 
             {isSelectorOpen && (
-              <div className="nav-selector-menu" role="menu" aria-label="Section navigation">
+              <div
+                className="nav-selector-menu"
+                role="group"
+                aria-label="Section navigation"
+                style={{ '--selected-offset': `${selectedOffset}rem` }}
+              >
                 {sections.map((section) => {
-                  const Icon = section.icon;
-
-                  return (
-                    <NavLink
-                      key={section.key}
-                      to={section.to}
-                      className={({ isActive }) => `nav-selector-item ${isActive ? 'active' : ''}`}
-                      style={{ '--section-accent': section.color }}
-                      role="menuitem"
-                    >
-                      <span className="nav-selector-item-icon" aria-hidden="true">
-                        <Icon size={15} />
-                      </span>
-                      <span>{section.name}</span>
+                  const content = <><span>{section.name}</span><span className="nav-selector-item-marker" aria-hidden="true" /></>;
+                  return section.key === activeSection?.key ? (
+                    <button key={section.key} type="button" className="nav-selector-item active" style={{ '--section-accent': section.color }} aria-current="page" onClick={() => {
+                      setIsSelectorOpen(false);
+                      selectorRef.current?.querySelector('.nav-selector-trigger')?.focus();
+                    }}>
+                      {content}
+                    </button>
+                  ) : (
+                    <NavLink key={section.key} to={section.to} className="nav-selector-item" style={{ '--section-accent': section.color }}>
+                      {content}
                     </NavLink>
                   );
                 })}

@@ -150,7 +150,7 @@ export default function LandingPage() {
         <GitHubChart />
 
         <div className="home-links" aria-label="Site index">
-          {sections.map((section) => {
+          {sections.filter((section) => section.key !== 'home').map((section) => {
             const Icon = section.icon;
 
             return (

@@ -1,6 +1,13 @@
-import { FiBookOpen, FiFolder, FiUser } from 'react-icons/fi';
+import { FiBookOpen, FiFolder, FiHome, FiUser } from 'react-icons/fi';
 
 const sections = [
+  {
+    key: 'home',
+    name: 'Home',
+    to: '/',
+    icon: FiHome,
+    color: '#3b6db3',
+  },
   {
     key: 'writing',
     name: 'Writing',
@@ -25,10 +32,7 @@ const sections = [
 ];
 
 export function getActiveSection(pathname) {
-  if (pathname.startsWith('/blog')) return sections[0];
-  if (pathname.startsWith('/projects')) return sections[1];
-  if (pathname.startsWith('/about')) return sections[2];
-  return null;
+  return sections.find(({ to }) => pathname === to || (to !== '/' && pathname.startsWith(`${to}/`))) ?? null;
 }
 
 export default sections;
