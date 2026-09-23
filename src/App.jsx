@@ -1,79 +1,51 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion as Motion, useReducedMotion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import ProjectsPage from './components/ProjectsPage';
 import BlogPage from './components/BlogPage';
-import AboutPage from './components/AboutPage';
 import './styles/globals.css';
 import './App.css';
 
 const BlogPost = lazy(() => import('./components/BlogPost'));
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [pathname]);
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView();
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+  }, [pathname, hash]);
 
   return null;
 }
 
-function AnimatedRoutes() {
-  const location = useLocation();
-  const prefersReducedMotion = useReducedMotion();
-
-  const transition = prefersReducedMotion
-    ? { duration: 0.12, ease: 'easeOut' }
-    : { duration: 0.18, ease: [0.22, 1, 0.36, 1] };
-
-  const variants = prefersReducedMotion
-    ? {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        exit: { opacity: 0 },
-      }
-    : {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        exit: { opacity: 0 },
-      };
-
+function AppRoutes() {
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Motion.div
-        key={location.pathname}
-        className="route-transition"
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={variants}
-        transition={transition}
-      >
-        <Routes location={location}>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route
-            path="/blog/:slug"
-            element={
-              <Suspense
-                fallback={
-                  <section className="page route-loading">
-                    <div className="page-shell">Loading...</div>
-                  </section>
-                }
-              >
-                <BlogPost />
-              </Suspense>
-            }
-          />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-      </Motion.div>
-    </AnimatePresence>
+    <div className="route-transition">
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route
+          path="/blog/:slug"
+          element={
+            <Suspense
+              fallback={
+                <section className="page route-loading">
+                  <div className="page-shell">Loading...</div>
+                </section>
+              }
+            >
+              <BlogPost />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </div>
   );
 }
 
@@ -84,7 +56,7 @@ function App() {
       <div className="app-wrapper">
         <Navbar />
         <main className="content">
-          <AnimatedRoutes />
+          <AppRoutes />
         </main>
       </div>
     </Router>

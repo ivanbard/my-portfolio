@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { getGithubContributionsData } from './lib/github-contributions.js';
+import blogViewsHandler from './api/blog-views.js';
 
 function githubContributionsDevApi() {
   return {
@@ -31,6 +32,36 @@ function githubContributionsDevApi() {
   };
 }
 
+function blogViewsDevApi() {
+  return {
+    name: 'blog-views-dev-api',
+    configureServer(server) {
+      server.middlewares.use('/api/blog-views', async (req, res) => {
+        let body = '';
+        for await (const chunk of req) body += chunk;
+        try {
+          req.body = body ? JSON.parse(body) : undefined;
+        } catch {
+          res.statusCode = 400;
+          res.end('Invalid JSON');
+          return;
+        }
+
+        res.status = (code) => {
+          res.statusCode = code;
+          return res;
+        };
+        res.json = (data) => {
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify(data));
+          return res;
+        };
+        await blogViewsHandler(req, res);
+      });
+    },
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -39,7 +70,11 @@ export default defineConfig(({ mode }) => {
     process.env.GITHUB_TOKEN = env.GITHUB_TOKEN;
   }
 
+  for (const key of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'KV_REST_API_URL', 'KV_REST_API_TOKEN']) {
+    if (!process.env[key] && env[key]) process.env[key] = env[key];
+  }
+
   return {
-    plugins: [react(), githubContributionsDevApi()],
+    plugins: [react(), githubContributionsDevApi(), blogViewsDevApi()],
   };
 });

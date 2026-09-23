@@ -4,7 +4,7 @@ const experiences = [
     title: 'Data Engineer (Amplify)',
     organization: 'Royal Bank of Canada',
     location: 'Toronto, ON',
-    period: 'May 2026 - Present',
+    period: 'May 2026 - Aug 2026',
     description:
       'Architected blockchain-based institutional FX platform work spanning technical PoC, real-time data pipelines, optimization logic, on-chain settlement, and a full-stack trading UI.',
     current: true,

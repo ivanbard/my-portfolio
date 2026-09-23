@@ -1,9 +1,17 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import blogPosts from '../data/blogPosts';
+import { getBlogViews } from '../lib/blogViews';
 import '../styles/BlogPage.css';
 
 export default function BlogPage() {
+  const [views, setViews] = useState({});
+
+  useEffect(() => {
+    getBlogViews().then(setViews).catch(() => {});
+  }, []);
+
   return (
     <section className="page blog-page">
       <div className="page-shell">
@@ -25,6 +33,11 @@ export default function BlogPage() {
               <p className="blog-page-date">{post.date}</p>
               <h2>{post.title}</h2>
               <p className="blog-page-excerpt">{post.excerpt}</p>
+              <p className="blog-page-views">
+                {views[post.id] === undefined
+                  ? '\u00a0'
+                  : `${views[post.id].toLocaleString()} ${views[post.id] === 1 ? 'view' : 'views'}`}
+              </p>
             </Link>
           ))}
         </div>
