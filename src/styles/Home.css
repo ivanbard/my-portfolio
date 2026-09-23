@@ -65,33 +65,38 @@
   z-index: 1000;
   top: 50%;
   left: calc(100% + 0.75rem);
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  width: min(21rem, calc(100vw - 2rem));
-  padding: 0.55rem 1.8rem 0.55rem 0.55rem;
+  display: grid;
+  gap: 0.5rem;
+  width: min(18rem, calc(100vw - 2rem));
+  padding: 0.55rem;
   border: 1px solid var(--line);
+  border-radius: 0.75rem;
   background: var(--bg);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  box-shadow: 0 12px 28px rgb(31 31 27 / 14%);
   transform: translateY(-50%);
   animation: location-preview-in 0.18s ease-out;
 }
 
 .home-location-close {
   position: absolute;
-  top: 0.25rem;
-  right: 0.3rem;
+  top: 0.45rem;
+  right: 0.5rem;
   display: grid;
   width: 1.5rem;
   height: 1.5rem;
   place-items: center;
   border: 0;
   background: transparent;
-  color: var(--muted);
+  color: white;
   font: inherit;
   font-size: 1.1rem;
   line-height: 1;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 70%);
   cursor: pointer;
+}
+
+.home-location-close:hover {
+  color: white;
 }
 
 .home-location-close:focus-visible {
@@ -102,18 +107,29 @@
 .home-location-image {
   position: relative;
   display: grid;
-  flex: 0 0 9rem;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  flex: auto;
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  border: 0;
   place-items: center;
   overflow: hidden;
+  border-radius: 0.3rem;
   background: color-mix(in srgb, var(--line) 45%, var(--bg));
   color: var(--muted);
+  font: inherit;
   text-align: center;
   font-size: 0.72rem;
   line-height: 1.4;
+  cursor: pointer;
 }
 
-.home-location-image span {
+.home-location-image:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.home-location-placeholder {
   padding: 0.5rem;
 }
 
@@ -130,9 +146,24 @@
   opacity: 1;
 }
 
+.home-location-image-count {
+  position: absolute;
+  z-index: 1;
+  right: 0.45rem;
+  bottom: 0.4rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  background: rgb(31 31 27 / 58%);
+  color: white;
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
 .home-location-caption {
-  display: grid;
-  gap: 0.15rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0 0.15rem 0.1rem;
   color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.45;
@@ -146,6 +177,16 @@
 @keyframes location-preview-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+.home-location-preview.is-closing {
+  pointer-events: none;
+  animation: location-preview-out 0.18s ease forwards;
+}
+
+@keyframes location-preview-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 @media (max-width: 850px) {

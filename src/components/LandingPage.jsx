@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import GitHubChart from './GitHubChart';
 import sections from '../data/sections';
+import locations from '../data/locations';
 import '../styles/Home.css';
 
 const sectionCopy = {
@@ -10,21 +11,57 @@ const sectionCopy = {
   about: 'Background and current work.',
 };
 
-const locations = {
-  minsk: { name: 'Minsk', image: '/images/locations/minsk.jpg', caption: 'Where I was born.' },
-  toronto: { name: 'Toronto', image: '/images/locations/toronto.jpg', caption: 'Where I live now.' },
-  kingston: { name: 'Kingston', image: '/images/locations/kingston.jpg', caption: "Where I study at Queen's University." },
-};
-
 export default function LandingPage() {
   const [activeLocation, setActiveLocation] = useState(null);
+  const [imageIndex, setImageIndex] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isPreviewHovered, setIsPreviewHovered] = useState(false);
+  const [isPreviewFocused, setIsPreviewFocused] = useState(false);
+  const [isPreviewClosing, setIsPreviewClosing] = useState(false);
   const introRef = useRef(null);
+  const closeTimerRef = useRef(null);
 
   const showLocation = (location) => {
+    window.clearTimeout(closeTimerRef.current);
+    setIsPreviewClosing(false);
+    if (location !== activeLocation) {
+      setImageIndex(0);
+      setImageLoaded(false);
+      setIsPreviewHovered(false);
+      setIsPreviewFocused(false);
+    }
     setActiveLocation(location);
-    setImageLoaded(false);
   };
+
+  const closeLocation = () => {
+    if (!activeLocation) return;
+
+    setIsPreviewClosing(true);
+    window.clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = window.setTimeout(() => {
+      setActiveLocation(null);
+      setIsPreviewClosing(false);
+      setIsPreviewHovered(false);
+      setIsPreviewFocused(false);
+    }, 180);
+  };
+
+  const advanceImage = (location) => {
+    setImageLoaded(false);
+    setImageIndex((index) => (index + 1) % locations[location].photos.length);
+  };
+
+  useEffect(() => {
+    if (!activeLocation || isPreviewHovered || isPreviewFocused || isPreviewClosing) return undefined;
+
+    const timer = window.setTimeout(() => {
+      setImageLoaded(false);
+      setImageIndex((index) => (index + 1) % locations[activeLocation].photos.length);
+    }, 7000);
+    return () => window.clearTimeout(timer);
+  }, [activeLocation, imageIndex, isPreviewHovered, isPreviewFocused, isPreviewClosing]);
+
+  useEffect(() => () => window.clearTimeout(closeTimerRef.current), []);
 
   const cityLink = (key) => (
     <span className="home-city-anchor">
@@ -40,19 +77,37 @@ export default function LandingPage() {
         {locations[key].name}
       </button>
       {activeLocation === key && (
-        <span className="home-location-preview" id="home-location-preview" aria-live="polite">
-          <button className="home-location-close" type="button" aria-label="Close location preview" onClick={() => showLocation(null)}>{'\u00d7'}</button>
-          <span className="home-location-image">
-            {!imageLoaded && <span>Photo coming soon.</span>}
+        <span
+          className={`home-location-preview${isPreviewClosing ? ' is-closing' : ''}`}
+          id="home-location-preview"
+          onPointerEnter={(event) => event.pointerType === 'mouse' && setIsPreviewHovered(true)}
+          onPointerLeave={(event) => event.pointerType === 'mouse' && setIsPreviewHovered(false)}
+          onFocusCapture={() => setIsPreviewFocused(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setIsPreviewFocused(false);
+          }}
+        >
+          <button className="home-location-close" type="button" aria-label="Close location preview" onClick={closeLocation}>{'\u00d7'}</button>
+          <button
+            className="home-location-image"
+            type="button"
+            aria-label={`Show next ${locations[key].name} photo`}
+            onClick={() => advanceImage(key)}
+          >
+            {!imageLoaded && <span className="home-location-placeholder">Photo coming soon.</span>}
             <img
-              src={locations[key].image}
-              alt={`${locations[key].name} city view`}
+              src={locations[key].photos[imageIndex].src}
+              alt={`${locations[key].name} view ${imageIndex + 1}`}
               className={imageLoaded ? 'is-loaded' : ''}
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageLoaded(false)}
             />
+            <span className="home-location-image-count" aria-hidden="true">{imageIndex + 1} / {locations[key].photos.length}</span>
+          </button>
+          <span className="home-location-caption">
+            <strong>{locations[key].name}</strong>
+            {locations[key].photos[imageIndex].caption && <span>{locations[key].photos[imageIndex].caption}</span>}
           </span>
-          <span className="home-location-caption"><strong>{locations[key].name}</strong><span>{locations[key].caption}</span></span>
         </span>
       )}
     </span>
@@ -66,14 +121,14 @@ export default function LandingPage() {
           ref={introRef}
           onPointerLeave={(event) => {
             if (event.pointerType === 'mouse' && !introRef.current?.contains(document.activeElement)) {
-              setActiveLocation(null);
+              closeLocation();
             }
           }}
           onBlur={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget)) setActiveLocation(null);
+            if (!event.currentTarget.contains(event.relatedTarget)) closeLocation();
           }}
           onKeyDown={(event) => {
-            if (event.key === 'Escape') setActiveLocation(null);
+            if (event.key === 'Escape') closeLocation();
           }}
         >
           <p className="home-intro-line">
