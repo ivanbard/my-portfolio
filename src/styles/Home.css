@@ -124,6 +124,7 @@
 
 .home-location-close {
   position: absolute;
+  z-index: 2;
   top: 0.45rem;
   right: 0.5rem;
   display: grid;
@@ -234,11 +235,24 @@
   to { opacity: 0; }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1120px) {
   .home-location-preview {
-    top: calc(100% + 0.5rem);
-    left: 0;
-    transform: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(18rem, calc(100vw - 1.5rem));
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 400px) {
+  .home-experience-period {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .home-experience-period span:last-child {
+    text-align: left;
   }
 }
 

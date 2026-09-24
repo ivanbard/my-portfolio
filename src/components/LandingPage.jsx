@@ -72,7 +72,7 @@ export default function LandingPage() {
 
   useEffect(() => () => window.clearTimeout(closeTimerRef.current), []);
 
-  const cityLink = (key) => (
+  const cityLink = (key, suffix = '') => (
     <span className="home-city-anchor">
       <button
         className="home-city-link"
@@ -85,6 +85,7 @@ export default function LandingPage() {
       >
         {locations[key].name}
       </button>
+      {suffix}
       {activeLocation === key && (
         <span
           className={`home-location-preview${isPreviewClosing ? ' is-closing' : ''}`}
@@ -141,7 +142,7 @@ export default function LandingPage() {
           }}
         >
           <p className="home-intro-line">
-            I was born in {cityLink('minsk')}, and now live in {cityLink('toronto')}.
+            I was born in {cityLink('minsk')}, and now live in {cityLink('toronto', '.')}
           </p>
           <p className="home-intro-line">
             I currently study computer engineering at <a href="https://www.queensu.ca/">Queen's University</a> out in {cityLink('kingston')}.
