@@ -1,5 +1,19 @@
 const projects = [
   {
+    title: 'Mini SRC CPU',
+    desc: 'A 32-bit multicycle processor in Verilog with a single-bus datapath, 28-instruction ISA, self-checking simulations, and an FPGA top level.',
+    link: 'https://github.com/ivanbard/mini-src-cpu',
+    linkLabel: 'Code',
+    tags: ['Verilog', 'CPU Design', 'FPGA'],
+  },
+  {
+    title: 'Apple Reminders iCloud MCP',
+    desc: 'An unofficial TypeScript MCP server for reading and managing Apple Reminders through iCloud.com using a local browser.',
+    link: 'https://github.com/ivanbard/apple-reminders-icloud-mcp',
+    linkLabel: 'Code',
+    tags: ['TypeScript', 'MCP', 'Browser Automation'],
+  },
+  {
     title: 'Telchines',
     desc: 'A CLI-first hardware verification toolkit for replayable workflows across retrieval, repair, triage, SVA/cocotb generation, adapters, and benchmarked validation.',
     link: 'https://github.com/ivanbard/telchines',
