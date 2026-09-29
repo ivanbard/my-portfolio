@@ -1,8 +1,8 @@
 ---
 title: Abstraction and Simplification
 date: 2026-09-29
-excerpt: A reflection on building Phoenix, learning to pivot, and finding unexpected ownership during RBC Amplify.
-tags: [Career, Internship, Technology]
+excerpt: How can abstraction be used to contribute to the modern push for functionality and simplification?
+tags: [Technology]
 readTime: 8 min read
 ---
 ## Abstraction, abstraction, abstraction

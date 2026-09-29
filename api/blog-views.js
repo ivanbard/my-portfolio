@@ -1,4 +1,5 @@
 const postIds = [
+  'abstraction-and-simplification',
   'disappearance-of-the-ide',
   'embedded-systems-intro',
   'getting-started-with-xgboost',
