@@ -76,8 +76,16 @@
 }
 
 .blog-post-content a {
+  color: inherit;
   text-decoration: underline;
+  text-decoration-color: var(--line-strong);
   text-underline-offset: 0.14em;
+  transition: text-decoration-color 0.16s ease;
+}
+
+.blog-post-content a:hover,
+.blog-post-content a:focus-visible {
+  text-decoration-color: var(--text);
 }
 
 .blog-post-content .heading-anchor {

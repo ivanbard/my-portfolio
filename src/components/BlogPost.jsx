@@ -11,6 +11,12 @@ import blogPosts from '../data/blogPosts';
 import { countBlogView } from '../lib/blogViews';
 import '../styles/BlogPost.css';
 
+const postImages = import.meta.glob('../posts/*.png', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
 const calloutTypes = {
   note: { title: 'Note', icon: FiInfo },
   tip: { title: 'Tip', icon: FiCheck },
@@ -344,6 +350,7 @@ export default function BlogPost() {
             components={{
               aside: Callout,
               code: MarkdownCode,
+              img: ({ src, alt }) => <img src={postImages[`../posts/${src}`] ?? src} alt={alt} />,
               pre: ({ children }) => children,
             }}
           >
